@@ -6,10 +6,10 @@
 <mt:SetVarBlock name="pageDescription"><$MTEntryBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
 <mt:Ignore><!-- pageKeywords --></mt:Ignore>
 <mt:SetVarBlock name="pageKeywords"><$mt:EntryTitle$>, <MTEntryTags glue=", "><$MTTagLabel$></MTEntryTags><mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages> , HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
-<mt:Ignore><!-- feeds --></mt:Ignore>
-<mt:SetVarBlock name="feeds">
+<mt:Ignore><!-- ブログ用mt.jsファイル --></mt:Ignore>
+<mt:SetVarBlock name="blogjs">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>" />
-<script type="text/javascript" src="<$mt:BlogURL$>blog.js"></script>
+<script type="text/javascript" src="<$mt:Link template="javascript"$>"></script>
 <$mt:EntryTrackbackData$>
 </mt:SetVarBlock>
 <mt:Ignore><!-- otherMeta --></mt:Ignore>
@@ -87,28 +87,12 @@
 </div>
 <!-- /content -->
 
-<!-- footer --> 
-<!--#include virtual="/shared/include/common/footer.html" -->  
-<!-- /footer -->
-
+<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer-->
 </div>
-<!-- container-inner -->
-</div>
-<!-- /container -->
-<!-- javascripts -->
-<!--#include virtual="/shared/include/common/javascripts.html" --> 
-<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
-<script type="text/javascript">
-$(function(){
-sortBloggers();
-})
-</script>
-<script type="text/javascript">
-<!--
-mtAttachEvent("load", mtEntryOnLoad);
-mtAttachEvent("unload", mtEntryOnUnload);
-//-->
-</script>
-<!-- /javascripts -->
-<$mt:Include module="HTML-Footer" blog_id="1"$>
+<!--#include virtual="/shared/include/common/htmlFooter.html" -->
+</body>
+</html>
 </MTApplyModifier>

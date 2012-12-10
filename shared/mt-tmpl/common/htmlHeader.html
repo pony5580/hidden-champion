@@ -52,11 +52,17 @@ DD_belatedPNG.fix('.png_bg');
 <script type="text/javascript" src="/shared/js/jquery.sharrre-1.3.4.min.js"></script>
 <script type="text/javascript" src="/shared/js/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="/shared/js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="/shared/js/mt.js"></script>
+
 <script type="text/javascript" src="/shared/js/spectragram.min.js"></script>
 <script type="text/javascript" src="/shared/js/feature.js"></script>
 <script type="text/javascript" src="/shared/js/purl.js"></script>
 <script type="text/javascript" src="/shared/js/project.js"></script>
+
+<mt:If name="blog_id">
+<$mt:GetVar name="blogjs"$>
+<mt:Else>
+<script type="text/javascript" src="/shared/js/mt.js"></script>
+</mt:If>
 
 </head>
 </MTApplyModifier>
