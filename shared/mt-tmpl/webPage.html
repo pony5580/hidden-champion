@@ -1,0 +1,65 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$mt:PageTitle$> | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription"><$MTPageBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords"><$mt:PageTitle$>, HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header"$>
+
+<body>
+<div id="wrapper">
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header--> 
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span><$mt:PageTitle$></span>
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--contents_left-->
+			<div id="contents_left"> 
+				<!--webpage-->
+				<article class="web_page">
+					<header class="web_page_header">
+					<h1><$mt:PageTitle$></h1>
+					</header>
+					<section class="web_page_body">
+					<mt:If tag="PageBody">
+<$mt:PageBody$>
+</mt:If>
+<mt:If tag="PageMore" convert_breaks="0">
+<$mt:PageMore$>
+</mt:If>
+					</section>
+				</article>
+				<!--webpage-->
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" --> 
+</body>
+</html>
+</MTApplyModifier>

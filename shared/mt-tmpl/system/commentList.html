@@ -1,0 +1,25 @@
+<div class="comment<mt:If name="__odd__"> odd<mt:Else> even</mt:If>"<mt:IfArchiveTypeEnabled archive_type="Individual"> id="comment-<$mt:CommentID$>"</mt:IfArchiveTypeEnabled>>
+<div class="inner">
+<div class="comment-header">
+<div class="asset-meta">
+<span class="byline">
+<$mt:CommentAuthorIdentity$>
+<mt:IfCommentParent>
+Reply to <a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>
+<mt:Else>
+<span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+&nbsp;&nbsp;<a href="<$mt:CommentLink$>"><abbr class="published" title="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate language="en" format="%Y %B,%d"$></abbr></a>
+<mt:Unless name="comment_preview">
+<mt:IfCommentsAccepted>
+&nbsp;&nbsp;<span class="rep"><$mt:CommentReplyToLink text="Reply"$></span>
+</mt:IfCommentsAccepted>
+</mt:Unless>
+</span>
+</div>
+</div>
+<div class="comment-content">
+<$mt:CommentBody$>
+</div>
+</div>
+</div>

@@ -1,0 +1,137 @@
+<div id="beta">
+<div id="beta-inner">
+<!-- ad -->
+<div class="widget-ad widget" id="advertisement">
+<h3 class="widget-header">ADVERTISEMENT</h3>
+<div class="widget-content" id="ad-large">
+<a href="hogehoge"><img src="" width="300"  alt="" /></a>
+</div>
+</div>
+<!-- /ad -->
+<!-- bloggers -->
+<!-- blogs -->
+<div class="widget-blogs widget">
+<h3 class="widget-header">Blogs</h3>
+<!-- scroll-wrp -->
+<div id="scroll-wrp" class="widget-content">
+<ul style="overflow:visible; height:auto;">
+<MTMultiBlog mode="loop" exclude_blogs="4,6,1,20,23, 31">
+<mt:IfNonZero tag="BlogEntryCount" exclude_blogs="4,6,1,20, 23, 31">
+<mt:Entries lastn="1">
+<li class="blogAuthorList">
+<a href="<$mt:EntryPermalink$>">
+<span class="img">
+<mt:Pages>
+<MTPageAssets>
+<img src="<$MTAssetThumbnailURL height="60"$>" />
+</MTPageAssets>
+</mt:Pages>
+</span>
+<span class="wrp">
+<span class="name"><$mt:BlogName$></span>
+<span class="date"><$mt:EntryDate language="en" format="%Y %B,%d"$></span>
+<span class="published" title="<$mt:EntryDate format_name="iso8601"$>" style="display:none" ><$mt:EntryDate format="%x %H:%M" language="en"$></span>
+<span class="title"><$mt:EntryTitle$></span>
+</span>
+</a>
+</li>
+</mt:Entries>
+</mt:IfNonZero>
+</MTMultiBlog>
+</ul>
+</div>
+<!-- /scroll-wrp -->
+</div>
+<!-- blogs -->
+<!-- /bloggers -->
+<!-- social -->
+<div id="social">
+<ul>
+<li><a href="http://twitter.com/HIDDEN_CHAMPION" target="_blank"><img src="/shared/images/icon/social_twitter.gif" width="65" height="17" alt="Twitter" /></a></li>
+<li><a href="http://www.myspace.com/hiddenchampion" target="_blank"><img src="/shared/images/icon/social_mySpace.gif" width="80" height="17" alt="My Space" /></a></li>
+<li><a href="http://hidden-champion.net/atom.xml" target="_blank"><img src="/shared/images/icon/social_rss.gif" width="48" height="17" alt="RSS" /></a></li>
+</ul>
+</div>
+<!-- /social -->
+<!-- tag -->
+<$mt:setvar name="tag_count" value="1"$>
+<div class="widget-archive widget-tag-cloud widget">
+<h3 class="widget-header">TAGS</h3>
+<!-- tag-content -->
+<div class="widget-content">
+<ul>
+<mt:Tags top="12">
+<li class="<MTIf name="tag_count" op="%" value="2" eq="0">br</MTIf>"><a href="<$mt:TagSearchLink$>"><$mt:TagName$></a></li>
+<$mt:setvar name="tag_count" op="+" value="1"$>
+</mt:Tags>
+</ul>
+</div>
+<!-- /tag-content -->
+</div>
+<!-- /tag -->
+<!-- category -->
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<div class="widget-archive widget-archive-category widget">
+<h3 class="widget-header">Category</h3>
+<div class="widget-content">
+<$mt:setvar name="cat_count" value="1"$>
+<mt:TopLevelCategories>
+<mt:SubCatIsFirst>
+<!-- list -->
+<ul class="pkg">
+</mt:SubCatIsFirst>
+<mt:If tag="CategoryCount">
+<li class="<MTIf name="cat_count" op="%" value="2" eq="0">br</MTIf>"><a href="<$mt:CategoryArchiveLink$>"<mt:If tag="CategoryDescription"> title="<$mt:CategoryDescription remove_html="1" encode_html="1"$>"</mt:If>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a>
+<mt:Else>
+<li class="<MTIf name="cat_count" op="%" value="2" eq="0">br</MTIf>"><$mt:CategoryLabel$>
+</mt:If>
+<$mt:SubCatsRecurse$>
+</li>
+<mt:SubCatIsLast>
+</ul>
+</mt:SubCatIsLast>
+<!-- /list -->
+<$mt:setvar name="cat_count" op="+" value="1"$>
+</mt:TopLevelCategories>
+</div>
+</div>
+</mt:IfArchiveTypeEnabled>
+<!-- /category -->
+<!-- monthly & blogger -->
+<div class="widget-wrp">
+<!-- monthly --> 
+<mt:ArchiveList archive_type="Monthly">
+<mt:ArchiveListHeader>
+<div class="widget-archive-monthly widget-archive widget">
+<h3 class="widget-header">MONTHLY ARCHIVE</h3>
+<!-- monthly-content -->
+<div class="widget-content">
+<ul>
+</mt:ArchiveListHeader>
+<li><a href="<$mt:ArchiveLink$>"><$mt:ArchiveDate language="en" format="%B %Y"$> (<$mt:ArchiveCount$>)</a></li>
+<mt:ArchiveListFooter>
+</ul>
+</div>
+<!-- monthly-content -->
+</div>
+</mt:ArchiveListFooter>
+</mt:ArchiveList>
+<!-- monthly -->
+<!-- blogger -->
+<div class="widget-bloger-list widget-archive  widget">
+<h3 class="widget-header">Bloger</h3>
+<!-- blogger-content -->
+<div class="widget-content">
+<ul>
+<MTBlogs exclude_blogs="1,4,6,20,23,7,24,31">
+<li><a href="<$mt:BlogURL$>"><$mt:BlogName$></a></li>
+</MTBlogs>
+</ul>
+</div>
+<!-- blogger-content -->
+</div>
+<!-- /blogger -->
+</div>
+<!-- /monthly & blogger -->
+</div>
+</div>

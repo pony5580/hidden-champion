@@ -1,0 +1,73 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$MTArchiveDate format="%B,%Y" language="en"$> | <mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages> | BLOGS | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+<$mt:Include module="HTML-Header" blog_id="23"$>
+<body>
+<div id="wrapper"> 
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header-->
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span><a href="/blog/">BLOGS</a></span> &gt; <span><a href="<$MTBlogURL$>"><mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages></span></a> &gt; <span><$MTArchiveDate format="%B,%Y" language="en"$></span>
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--contents_left-->
+			<div id="contents_left">
+				<!--list_blogs-->
+				<section id="list_blogs">
+					<!--entry-->
+					<section id="" class="entry-asset asset hentry">
+					<MTPageContents count="10">
+						<mt:Entries lastn="200">
+						<$mt:Include module="EntryBlogList" blog_id="24"$>
+						<$MTPageSeparator$>
+						</mt:Entries>
+					</MTPageContents>
+					</section>
+					<!--/entry-->
+					
+				</section>
+				<!--/list_blogs-->
+				<!--pagenav-->
+				<div id="pagenav">
+					<nav>
+						<ul class="cf">
+							<MTIfPageBefore><$MTPageBefore delim="Previous"$></MTIfPageBefore>
+<$MTPageLists link_start="<li>" link_close="</li>"$>
+<MTIfPageNext><$MTPageNext delim="NEXT"$></MTIfPageNext>
+						</ul>
+					</nav>
+				</div>
+				<!--/pagenav-->
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<!--#include virtual="../../mt-sideMenu.html" -->
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer-->
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" -->
+</body>
+</html>
+</MTApplyModifier>

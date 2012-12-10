@@ -1,0 +1,101 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<aside id="sidebar">
+	<!--ads01-->
+	<section class="ads">
+		<hgroup>
+			<h1><a href="#"><img src="" width="300" alt=""></a></h1>
+		</hgroup>
+	</section>
+	<!--/ads01-->
+	<!--Follow hidden champion-->
+	<section class="follow">
+		<hgroup>
+			<h1>Follow HIDDEN CHAMPION</h1>
+		</hgroup>
+		<div class="sidebar_content_body">
+			<nav>
+				<ul class="cf">
+					<li class="follow_fb"><a href="https://www.facebook.com/HIDDENmag" target="_blank"><p>Facebook</p></a></li>
+					<li class="follow_tw"><a href="https://twitter.com/HIDDEN_CHAMPION" target="_blank"><p>Twitter</p></a></li>
+					<li class="follow_rss"><a href="http://hidden-champion.net/atom.xml" target="_blank"><p>RSS</p></a></li>
+				</ul>
+			</nav>
+			<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FHIDDENmag&amp;width=292&amp;height=62&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=false&amp;header=false&amp;appId=" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:90px;" allowTransparency="true"></iframe>
+		</div>
+	</section>
+	<!--/Follow hidden champion-->
+	<!--blogs-->
+	<!--#include virtual="/shared/include/module/mt-bloggers.html" -->
+	<!--/blogs-->
+	<!--this week event-->
+	<mt:MultiBlog blog_ids="1">
+	<mt:Entries field:this_week_event="1">
+		<MTIf name="__first__">
+	<section class="week">
+		<hgroup>
+			<h1>THIS WEEK EVENT</h1>
+		</hgroup>
+</MTIf>
+		<a href="<$mt:EntryPermalink$>">
+			<article class="cf">
+				<mt:EntryAssets type="image" lastn="1" sort_order="ascend">
+				<figure>
+					<mt:If tag="TopNewsThumbnail">
+<MTTopNewsThumbnailAsset><img src="<$MTAssetURL$>" /></MTTopNewsThumbnailAsset>
+<mt:Else>
+<img src="<$MTAssetThumbnailURL width="90"$>" width="90"/>
+</mt:If>
+				</figure>
+				</mt:EntryAssets>
+				<div class="right">
+					<header>
+						<h1><$mt:EntryTitle$></h1>
+						<mt:If tag="EntryDataNews_description">
+<h2><$mt:EntryDataNews_description filters="__default__"$></h2>
+						</mt:If>
+					</header>
+				</div>
+			</article>
+		</a>
+	<MTIf name="__last__">
+	</section>
+	</MTIf>
+	</mt:Entries>
+	</mt:MultiBlog>
+	<!--/this week event-->
+	<!--ade02-->
+	<section class="ads">
+		<hgroup>
+			<h1><a href="#"><img src="" width="300" alt=""></a></h1>
+		</hgroup>
+	</section>
+	<!--/ade02-->
+	<!--twitter gadget-->
+	<section id="twitter_gadget">
+	<a class="twitter-timeline" href="https://twitter.com/search?q=HIDDEN+CHAMPION" width="320" height="300" data-widget-id="269379614302928897">HIDDEN CHAMPION に関するツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</section>
+	<!--/twitter gadget-->
+	<!--store-->
+	<!--#include virtual="/shared/include/module/sidebarStore.html" -->
+	<!--/store-->
+	<!--instagram-->
+	<section class="instagram">
+		<hgroup class="cf">
+			<h1>Instagram</h1>
+			<h2>#hiddenchampion</h2>
+		</hgroup>
+		<div class="sidebar_content_body">
+			<ul class="cf"></ul>
+		</div>			
+	</section>
+	<!--/instagram-->
+	<!--ads03-->
+	<section class="ads">
+		<hgroup>
+			<h1><a href="#"><img src="" width="300" alt=""></a></h1>
+		</hgroup>
+	</section>
+	<!--/ads03-->
+</aside>
+</MTApplyModifier>

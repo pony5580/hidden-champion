@@ -1,0 +1,145 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><mt:PageFolder><$mt:FolderLabel$></mt:PageFolder> | Magazine | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- stylesheets --></mt:Ignore>
+<mt:SetVarBlock name="stylesheets"><link rel="stylesheet" type="text/css" href="/shared/style/exclusive/magazine.css" /></mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/blog/atom.xml" />
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header" body_id="page-magazine" blog_id="23"$>
+<!-- container -->
+<div id="container" class="magazine-top">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">HOME</a></span> >
+<span><a href="/magazine/">Magazine</a></span> >
+<span><mt:PageFolder><$mt:FolderLabel$></mt:PageFolder></span>
+</div>
+<!-- /topicpath -->
+<h3 id="magazine-page-title" class="widget-header">Magazine</h3> 
+
+<!-- magazine-wrap -->
+<div id="magazine-wrap" class="clr">
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+
+<$mt:setvar name="counter" value="0"$>
+
+<mt:Ignore><!-- folder_name --></mt:Ignore>
+<mt:SetVarBlock name="folder_name"><mt:PageFolder><$mt:FolderLabel$></mt:PageFolder></mt:SetVarBlock>
+
+<mt:Ignore><!-- mt:Entries --></mt:Ignore>
+<mt:Entries field:magazine_page_attr="表紙" tag="$folder_name">
+<mt:Ignore><!-- ▼stepHead --></mt:Ignore>
+<mt:If name="__counter__" op="%" value="3" eq="1">
+<!-- step -->
+<div class="step clr">
+</mt:If>
+<mt:Ignore><!-- ▲stepHead --></mt:Ignore>
+<!-- -->
+<div class="post<mt:if name="__counter__" op="%" value="3" eq="0"> break</mt:if>">
+<a href="<$mt:EntryPermaLink$>">
+<p class="thumb"><MTIf tag="MagazineThumb"><MTMagazineThumbAsset><img src="<$MTAssetThumbnailURL$>"/></MTMagazineThumbAsset></MTIf></p>
+<p class="title"><mt:EntryTitle></p>
+</a>
+</div>
+<!-- -->
+<mt:Ignore><!-- ▼stepFoot --></mt:Ignore>
+<mt:If name="__counter__" op="%" value="3" eq="2">
+</div>
+<!-- /step -->
+<mt:ElseIf name="__last__">
+</div>
+<!-- /step -->
+</mt:If>
+<mt:Ignore><!-- ▲stepFoot --></mt:Ignore>
+</mt:Entries>
+<mt:Ignore><!-- /mt:Entries --></mt:Ignore>
+
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- /alpha-->
+
+<!-- beta -->
+<div id="beta">
+<div id="beta-inner">
+<h4><img src="/shared/images/title/ttl_categories.gif" width="70" height="13" alt="Categories" /></h4>
+
+<mt:Folders show_empty="1">
+<mt:If name="__first__">
+<ul>
+</mt:If>
+<li<mt:If tag="FolderLabel" eq="$folder_name"> class="current"</mt:If>><a href="/magazine/<$MTFolderPath$>"><$MTFolderLabel$></a></li>
+<mt:If name="__last__">
+</ul>
+</mt:If>
+</mt:Folders>
+
+</div>
+</div>
+<!-- /beta -->
+
+</div>
+<!-- /magazine-wrap -->
+        
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+    
+<!-- footer -->    
+<!--#include virtual="/shared/include/common/footer.html" -->
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" -->
+<!--[if IE 6 ]>
+<script type="text/javascript" src="/shared/js/lib/DD_belatedPNG.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+	print_new();
+});
+
+function print_new() {
+	var delDay = 3;
+	var newDay = new Date();
+	$("div.article").each(function(){
+		var entryTIme = $(this).find(".dateTime").get(0).innerHTML;
+		var oldDay = new Date(entryTIme);
+		var d = (newDay - oldDay) / (1000 * 24 * 3600);
+		if(d <= delDay){
+			$(this).addClass("newEntry");
+		}
+	});
+}
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer" blog_id="1"$>
+</MTApplyModifier>

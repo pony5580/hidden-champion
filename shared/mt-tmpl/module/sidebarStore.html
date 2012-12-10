@@ -1,0 +1,17 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<section class="store">
+	<hgroup>
+		<h1>STORE</h1>
+	</hgroup>
+	<div class="sidebar_content_body">
+		<mt:Entries limit="1">
+		<a href="<$mt:EntryBody convert_breaks="0" remove_html="1"$>">
+			<figure>
+				<mt:if tag="EntryDataStoreimage"><mt:EntryDataStoreimageAsset><img src="<$mt:AssetURL$>" width="150" title="<$mt:EntryTitle$>"></mt:EntryDataStoreimageAsset></MTIf>
+				<figcaption><$mt:EntryTitle$></figcaption>						
+			</figure>
+		</a>
+		</mt:Entries>
+	</div>			
+</section>
+</MTApplyModifier>

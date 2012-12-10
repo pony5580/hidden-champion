@@ -1,0 +1,66 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://stage.hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://stage.hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header"$>
+
+<body>
+<div id="wrapper"> 
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header--> 
+	
+	<!--features-->
+	<!--#include virtual="/shared/include/top/features.html" -->
+	<!--/features--> 
+		
+	<!--nav_news_category-->
+	<mt:MultiBlog blog_ids="1">
+	<$mt:Include module="NavNewsCategory" blog_id="1"$>
+	</mt:MultiBlog>
+	
+	<!--/nav_news_category-->
+	
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf"> 
+			<!--contents_left-->
+			<div id="contents_left"> 
+				<!--list_news-->
+				<section id="list_news">
+				<mt:MultiBlog blog_ids="1">
+				<mt:Entries lastn="20"> 
+					<!--article_entry-->
+					<$mt:Include module="EntryList"$>
+					<!--/article_entry--> 
+				</mt:Entries> 
+				</mt:MultiBlog>
+				</section>
+				<!--list_news--> 
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" --> 
+</body>
+</html>
+</MTApplyModifier>

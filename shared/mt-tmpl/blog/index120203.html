@@ -1,0 +1,234 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">Blogs | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- stylesheets --></mt:Ignore>
+<mt:SetVarBlock name="stylesheets"><link type="text/css" href="/shared/style/exclusive/blog.css" rel="stylesheet"></mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/blog/atom.xml" />
+</mt:SetVarBlock>
+
+
+<$mt:Include module="HTML-Header" body_id="page-blogs" blog_id="23"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">HOME</a></span> >
+<span>Blogs</span>
+</div>
+<!-- /topicpath -->
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+
+<h3 id="blog-page-title" class="widget-header">Original Blog</h3>       
+
+<!-- blogs -->          
+<div class="widget-blog-orgin widget">
+<!-- blogs-wrp -->
+<div class="blogs-wrp clr">
+        
+<mt:IfNonZero tag="BlogEntryCount" include_blogs="children">
+<MTSetVar name="count" value="0">
+<mt:MultiBlog mode="loop" exclude_blogs="1,4,6,7,20,23,31,32, 29">
+<mt:Entries lastn="1">
+<MTSetVar name="count" op="++">
+<mt:Pages lastn="1">
+
+
+<MTIf name="count" op="mod" value="6" eq="1">
+<div class="step clr">
+</MTIf>
+
+
+<div class="article<MTIf name="count" op="mod" value="6" eq="0"> br</MTIf>">
+<a href="<$MTBlogURL$>">
+<MTPageAssets>
+<span class="imgWrp">
+<table width="128" height="128" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="<$MTAssetThumbnailURL width="128"$>" /></td>
+</tr>
+</table>
+</span>
+</MTPageAssets>
+</mt:Pages>
+<span class="dateTime"><$mt:EntryDate format="%Y/%B/%e" language="ja"></span>
+<mt:Pages lastn="1">
+<span class="name"><$mt:PageTitle$></span>
+</mt:Pages>
+<span class="new pngfix"></span>
+</a>
+</div>
+
+<MTIf name="count" op="mod" value="6" eq="0"></div></MTIf>
+
+</mt:Entries>
+</mt:MultiBlog>
+</mt:IfNonZero>   
+  
+</div>
+<!-- blogs-wrp -->
+
+<div id="page-blogger" class="layout-wm">
+<div id="blogs-timeline">
+
+<h3 class="widget-header">Timeline</h3>       
+
+<mt:MultiBlog mode="context" exclude_blogs="1,4,6,7,20,23,31,32, 29">
+<mt:Entries>
+
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<$mt:EntryTrackbackData$>
+<div id="entry-<$mt:EntryID$>" class="entry-asset asset hentry">
+<!-- asset-header -->
+<div class="asset-header">
+<span class="entryDate"><abbr class="published" title="<$mt:EntryDate format_name="iso8601"$>"><$mt:EntryDate language="en" format="%Y %B,%d"$></abbr></span>
+<h2 class="asset-name entry-title"><a href="<$mt:EntryPermalink$>" rel="bookmark"><$mt:EntryTitle$></a></h2>
+</div>
+<!-- /asset-header -->
+<!-- asset-content -->    
+<div class="asset-content entry-content">
+<mt:If tag="EntryBody">
+<div class="asset-body">
+<$mt:EntryBody words="200" convert_breaks="0"$>
+</div>
+
+<div class="asset-more-link">
+<a href="<$mt:EntryPermalink$>" rel="bookmark">Read More</a>
+</div>
+
+</mt:If>
+<mt:If tag="EntryMore" convert_breaks="0">
+<div id="more" class="asset-more">
+<$mt:EntryMore$>
+</div>
+</mt:If>
+</div>
+<!-- /asset-content -->
+<!-- asset-footer -->
+<div class="asset-footer clr">
+<p class="entry-meta">
+<span>Comments : <a href="<$mt:EntryPermalink$>#comments"><$mt:EntryCommentCount singular="1" plural="#"$></a></span>
+<mt:If tag="EntryCategory"><span>Category : <mt:EntryCategories glue=', '><a href="<$mt:CategoryArchiveLink$>" rel="tag"><$mt:CategoryLabel$></a></mt:EntryCategories></span></mt:If>
+<mt:EntryIfTagged><span>Tags : <mt:EntryTags glue=', '><a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><$mt:TagName$></a></mt:EntryTags></span></mt:EntryIfTagged></p>
+
+<mt:If name="entry_template">
+<p class="entry-social clr"><span class="twitterBtn"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="HIDDEN_CHAMPION" style="width:90px;">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></span>
+<iframe class="entry-fb" src="http://www.facebook.com/plugins/like.php?href=<$mt:EntryPermalink$>&amp;layout=button_count&amp;show_faces=true&amp;width=75&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+</p>
+</mt:If>
+
+</div>
+<!-- /asset-footer -->
+</div>
+</MTApplyModifier>
+
+</mt:Entries>
+</mt:MultiBlog>
+
+</div>
+<!-- blogs-timeline -->
+
+
+<div id="beta">
+  <div id="beta-inner">
+    <div class="widget-ad widget" id="advertisement">
+    <h3 class="widget-header">ADVERTISEMENT</h3>
+      <div class="widget-content" id="ad-large">
+      <a href=""><img src="" width="300"  alt="" /></a>
+      </div>
+    </div>
+    
+<!-- bloggers -->
+<!--#include virtual="../shared/include/module/mt-bloggers.html" -->
+<!-- /bloggers -->
+    
+  </div>
+</div>
+<!-- beta end -->
+
+
+</div>
+<!-- page-blogger -->
+
+</div>
+<!-- blogs -->  
+        
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- /alpha end -->
+        
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+    
+<!-- footer -->    
+<!--#include virtual="/shared/include/common/footer.html" -->
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" -->
+<!--[if IE 6 ]>
+<script type="text/javascript" src="/shared/js/lib/DD_belatedPNG.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+print_new();
+sortBloggers();
+});
+
+function print_new() {
+var delDay = 3;
+var newDay = new Date();
+$("div.article").each(function(){
+var entryTIme = $(this).find(".dateTime").get(0).innerHTML;
+var oldDay = new Date(entryTIme);
+var d = (newDay - oldDay) / (1000 * 24 * 3600);
+if(d <= delDay){
+$(this).addClass("newEntry");
+}
+});
+
+}
+
+$(function(){
+
+})
+
+</script>
+<script type="text/javascript">
+<!--
+mtAttachEvent("load", mtEntryOnLoad);
+mtAttachEvent("unload", mtEntryOnUnload);
+//-->
+</script>
+
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer" blog_id="1"$>
+</MTApplyModifier>

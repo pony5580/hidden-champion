@@ -1,0 +1,68 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<$mt:Var name="page_layout" value="layout-wm"$>
+
+<mt:If name="comment_confirmation">
+    <$mt:Var name="page_title" value="確認"$>
+    <$mt:Var name="message" value="コメントを投稿しました。"$>
+<mt:Else name="comment_pending">
+    <$mt:Var name="page_title" value="コメントありがとうございます。"$>
+    <$mt:Var name="message" value="コメントは現在承認されるまで公開を保留されています。"$>
+<mt:Else name="comment_error">
+    <$mt:Var name="page_title" value="コメント投稿エラー"$>
+    <mt:SetVarBlock name="message">コメントを投稿できませんでした。エラー: <$mt:ErrorMessage$></mt:SetVarBlock>
+</mt:If>
+<mt:SetVarBlock name="title"><$mt:BlogName encode_html="1"$>: <$mt:Var name="page_title"$></mt:SetVarBlock>
+<mt:SetVarBlock name="html_footer">
+    <script type="text/javascript">
+    /* <![CDATA[ */
+    var user = <$mt:UserSessionState$>;
+    var is_preview = true;
+    /* ]]> */
+    </script>
+</mt:SetVarBlock>
+
+
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$mt:EntryTitle$> | News | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription"><$MTEntryBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords"><$mt:EntryTitle$>, <MTEntryTags glue=", "><$MTTagLabel$></MTEntryTags>HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header"$>
+
+<body>
+<div id="wrapper"> 
+	<!--header-->
+	<$MTInclude file="/shared/include/common/header.html" ssi="1"$>
+	<!--/header--> 
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span><$mt:Var name="message"$></span>
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+		<section class="comment_comp">
+			<section class="title">
+				<h1><$mt:Var name="page_title"$></h1>
+			</section>
+			<section class="body">
+				<p><$mt:Var name="message"$></p>
+				<a href="<mt:If name="comment_error">javascript:history.back()<mt:Else><$mt:EntryLink$></mt:If>">元の記事に戻る</a>
+			</section>
+		</div>
+		</section>
+	</div>
+	<!--footer-->
+	<$MTInclude file="/shared/include/common/footer.html" ssi="1"$>
+	<!--/footer--> 
+</div>
+<$MTInclude file="/shared/include/common/htmlFooter.html" ssi="1"$>
+</body>
+</html>
+</MTApplyModifier>

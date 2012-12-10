@@ -1,0 +1,12 @@
+{
+  "ad":[
+	<mt:Entries glue="," limit="10">
+	{
+	"img": <mt:if tag="EntryDataAdsimage"><mt:EntryDataAdsimageAsset>"<$mt:AssetURL$>"</mt:EntryDataAdsimageAsset></MTIf>,
+	"link": "<$mt:EntryBody convert_breaks="0" remove_html="1"$>",
+	"target": "_blank",
+	"alt": "<$mt:EntryTitle$>" 
+    }
+	</mt:Entries>	
+	]
+}

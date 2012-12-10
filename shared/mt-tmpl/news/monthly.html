@@ -1,0 +1,75 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$MTArchiveDate format="%B,%Y" language="en"$> | News | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header" body_id="page-news"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">Home</a></span> &gt;
+<span><a href="/news/">News</a></span> &gt;
+<span><$MTArchiveDate format="%B,%Y" language="en"$></span>
+</div>
+<!-- topicpath -->
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+<h3 class="widget-header" id="news-page-title">News</h3>
+<mt:Entries>
+<!-- entry -->
+<$mt:Include module="EntryOutline"$>
+<!-- /entry -->
+</mt:Entries>
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- alpha -->
+        
+<!-- beta -->
+<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+<!-- /beta -->       
+      
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+
+<!-- footer --> 
+<!--#include virtual="/shared/include/common/footer.html" -->  
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" --> 
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+sortBloggers();
+})
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer"$>
+</MTApplyModifier>

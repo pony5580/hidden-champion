@@ -1,0 +1,70 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">MAGAZINE | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header" blog_id="23"$>
+
+<body>
+<div id="wrapper">
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header--> 
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span>MAGAZINE</span>
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--magazine navi-->
+			<$mt:Include module="NavMagCategory"$>
+			<!--/magazine navi-->
+			<!--magazine list-->
+			<section id="content_body" class="list_mag cf">
+				<div id="content_body_inner" class="cf">
+					<mt:Entries lastn="0">
+					<!--magazine-->
+					<a href="<$mt:EntryPermalink$>">
+					<mt:If name="__counter__" op="%" value="5" eq="0">
+					<article class="br">
+					<mt:Else>
+					<article>
+					</mt:If>
+						<mt:If tag="EntryDataMagazinethumb">
+						<MTEntryDataMagazinethumbAsset><figure><img src="<$MTAssetURL$>"></figure></MTEntryDataMagazinethumbAsset>
+						<mt:Else>
+						<figure><img src="<$EntryDataMagazinethumbURL width="240"$>" width="240"></figure>
+						</mt:If>
+						<h1><$MTEntryTitle$></h1>
+					</article>
+					</a>
+					<!--/magazine-->
+					</mt:Entries>
+				</div>
+			</section>
+			<!--/magazine list-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" --> 
+</body>
+</html>
+</MTApplyModifier>

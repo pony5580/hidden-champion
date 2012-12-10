@@ -1,0 +1,61 @@
+<$mt:EntryTrackbackData$>
+<div id="entry-<$mt:EntryID$>" class="entry-asset asset hentry">
+<div class="asset-header">
+<p class="entryDate"><$mt:EntryDate language="en" format="%Y %B,%d"$></p>
+<h2 class="asset-name entry-title"><a href="<$mt:EntryPermalink$>" rel="bookmark"><$mt:EntryTitle$></a></h2>
+<mt:If tag="EntryDataNews_description">
+<div class="entrySubTitle"><$mt:EntryDataNews_description filters="__default__"$></div>
+</mt:If>
+</div>
+<!-- entry-content -->
+<div class="asset-content entry-content">
+<mt:If tag="EntryBody">
+<!-- asset-body -->
+<div class="asset-body">
+<mt:EntryAssets type="image" lastn="1" sort_order="ascend">
+<mt:SetVarBlock name="imgw"><$mt:AssetProperty property="image_width"$></mt:SetVarBlock>
+<mt:SetVarBlock name="imgh"><$mt:AssetProperty property="image_width"$></mt:SetVarBlock>
+<p class="asset-img-thumb">
+<a href="<$mt:EntryPermalink$>">
+<MTIf name="imgw" gt="$imgh">
+<img src="<$MTAssetThumbnailURL height="240"$>" alt="<$MTEntryTitle$>" title="<$MTEntryTitle$>" />
+<MTElse>
+<img src="<$MTAssetThumbnailURL width="540"$>" alt="<$MTEntryTitle$>" title="<$MTEntryTitle$>" />
+</MTElse>
+</MTIf>
+</a>
+</p>
+</mt:EntryAssets>
+<$mt:EntryExcerpt$>
+</div>
+<!-- /asset-body -->
+</mt:If>
+<!-- read-more -->
+<div class="asset-more-link">
+<a href="<$mt:EntryPermalink$>" rel="bookmark">Read More</a>
+</div>
+<!-- /read-more -->
+</div>
+<!-- asset-body -->
+<!-- asset-footer -->
+<div class="asset-footer">
+<mt:Unless name="hide_counts" eq="1">
+<mt:IfCommentsActive>Comments : <a href="<$mt:EntryPermalink$>#comments"><$mt:EntryCommentCount singular="1" plural="#"$></a></mt:IfCommentsActive>
+<mt:Ignore>
+<mt:IfPingsActive><span class="separator">|</span> <a href="<$mt:EntryPermalink$>#trackbacks"><$mt:EntryTrackbackCount singular="トラックバック(1)" plural="トラックバック(#)"$></a></mt:IfPingsActive>
+</mt:Ignore>
+</mt:Unless>
+&nbsp;&nbsp;
+<!-- tag -->
+<mt:EntryIfTagged>
+<div class="entry-tags">
+<h4>Tags<span class="delimiter">:</span></h4>
+<ul>
+<li><mt:EntryTags glue='<span class="delimiter">,</span></li> <li>'><a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><$mt:TagName$></a></mt:EntryTags></li>
+</ul>
+</div>
+</mt:EntryIfTagged>
+<!-- /tag -->
+</div>
+<!-- asset-footer -->
+</div>

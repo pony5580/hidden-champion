@@ -1,0 +1,38 @@
+<mt:SetVarBlock name="entry_id"><$MTEntryID$></mt:SetVarBlock>
+<!-- alpha -->
+<div id="alpha" class="spLayout2">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+<h3 id="magazine-page-title" class="widget-header">Magazine</h3> 
+<h2><mt:entrytitle></h2>
+<p class="entry-meta">From HIDDEN CHAMPION <mt:EntryCategories><mt:If tag="CategoryLabel" ne="_SPECIAL"><$mt:CategoryLabel$></mt:If></mt:EntryCategories></p>
+<!-- entry-body -->
+<div class="entry-body clr">
+<div class="left"><MTIf tag="MagazineSPImage"><MTMagazineSPImageAsset><img src="<$MTAssetThumbnailURL$>"/></MTMagazineSPImageAsset></MTIf></div>
+<div class="right"><$mt:EntryBody$><$mt:EntryMore$></div>
+</div>
+<!-- /entry-body -->
+<!-- navigation -->
+<div id="navigation">
+<mt:SetVarBlock name="seriesTitle"><mt:MagazineSPTitle></mt:SetVarBlock>
+<mt:Entries field:magazine_sp_title="$seriesTitle" sort_order="ascend">
+<mt:If name="__first__">
+<ul class="pageNav">
+</mt:If>
+
+<mt:If tag="EntryID" eq="$entry_id">
+<li><span class="current_page"><mt:var name="__counter__"></span></li>
+<mt:Else>
+<li><a href="<mt:EntryPermaLink>" class="link_page"><mt:var name="__counter__"></a></li>
+</mt:If>
+
+<mt:If name="__last__">
+</ul>
+</mt:If>
+</mt:Entries>
+</div>
+<!-- /navigation -->
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- /alpha-->

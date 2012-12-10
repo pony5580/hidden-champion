@@ -1,0 +1,140 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$mt:EntryTitle$> | News | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription"><$MTEntryBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords"><$mt:EntryTitle$>, <MTEntryTags glue=", "><$MTTagLabel$></MTEntryTags>HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header"$>
+
+<body>
+<div id="wrapper"> 
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header--> 
+	<!--nav_news_category-->
+	<$mt:Include module="NavNewsCategory"$>
+	<!--/nav_news_category-->
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span><a href="/news/">NEWS</a></span> &gt; <span><$mt:EntryTitle$></span>
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--contents_left-->
+			<div id="contents_left"> 
+				<!--entry-->
+				<section id="entry-<$mt:EntryID$>" class="entry-asset asset hentry">
+					<article>
+						<!--asset-header-->
+						<header class="asset-header">
+							<div class="asset-header_inner">
+								<div class="meta cf">
+								<time datetime="<$mt:EntryDate format="iso8601"$>"  pubdate="pubdate" class="entry-date">
+									<$mt:EntryDate language="en" format="%B, %d %Y"$>
+								</time>
+								</div>
+								<h1 class="entry-title"><$mt:EntryTitle$></h1>
+							</div>
+						</header>
+						<!--/asset-header-->
+						<!-- asset-content -->
+						<section class="asset-content entry-content">
+							<mt:If tag="EntryBody">
+							<div class="asset-body">
+								<$mt:EntryBody$>
+							</div>
+							</mt:If>
+							<mt:If tag="EntryMore" convert_breaks="0">
+							<!-- more -->
+							<$mt:EntryMore$>
+							<!-- /more -->
+							</mt:If>
+						</section>
+						<!-- /asset-content -->
+						<!--asset-information-->
+						<MTIfNonEmpty tag="EntryDataEventinfoactive">
+						<section class="asset-information">
+							<h2 class="info_title"><$mt:EntryTitle$></h2>
+							<table width="640">
+							<mt:If tag="EntryDataEventinfodate">
+								<tr>
+									<td class="gl">Date</td>
+									<td><mt:EntryDataEventinfodate></td>
+								</tr>
+							</mt:If>
+							<mt:If tag="EntryDataEventinfovenue">
+								<tr>
+									<td class="gl">Venue</td>
+									<td><mt:EntryDataEventinfovenue></td>
+								</tr>
+							</mt:If>
+							<mt:If tag="EntryDataEventinfotel">
+								<tr>
+									<td class="gl">Tel</td>
+									<td><mt:EntryDataEventinfotel></td>
+								</tr>
+							</mt:If>
+							<mt:If tag="EntryDataEventinfourl">
+								<tr>
+									<td class="gl">URL</td>
+									<td><a href="<mt:EntryDataEventinfourl>" target="_blank"><mt:EntryDataEventinfourl></a></td>
+								</tr>
+							</mt:If>
+							</table>
+						</section>
+						</MTIfNonEmpty>
+						<!--/asset-information-->
+						<!-- asset-meta -->
+						<section class="asset-meta">
+							<mt:If tag="EntryCategory">
+								<p>Category : <mt:EntryCategories glue=', '><a href="<$mt:CategoryArchiveLink$>" rel="tag"><$mt:CategoryLabel$></a></mt:EntryCategories>
+								</p>
+							</mt:If>
+							<mt:EntryIfTagged>
+							<p class="end">Tags : <mt:EntryTags glue=', '><a href="javascript:void(0)" onClick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><$mt:TagName$></a></mt:EntryTags></p>
+							</mt:EntryIfTagged>
+						</section>
+						<!-- /asset-meta -->
+						<!-- asset-social -->
+						<section class="asset-social">
+							<span class="twitterBtn"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="HIDDEN_CHAMPION">Tweet</a>
+<script>!function(d,s,id){var
+js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span>
+							<span class="fbBtn"><iframe src="http://www.facebook.com/plugins/like.php?href=<$mt:EntryPermalink$>&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></span>
+						</section>
+						<!-- /asset-social -->
+						<!-- asset-comment -->
+						<$mt:Include module="CommentRenew"$>
+						<!-- /asset-comment -->
+						<!--page navi-->
+						<section class="prevnext cf">
+							<p class="prevEntry"><a href="http://hidden-champion.net/blog/pony/2012/08/yagi-jam.html">Previous</a></p>
+							<p class="nextEntry"><a href="http://hidden-champion.net/blog/pony/2012/10/cocomo-hallowen-party.html">Next</a></p>
+						</section>
+						<!--/page navi-->
+					</article>
+				</section>
+				<!--/entry-->
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" -->
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" -->
+</body>
+</html>
+</MTApplyModifier>

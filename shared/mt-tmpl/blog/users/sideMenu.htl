@@ -1,0 +1,208 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<div id="beta">
+<div id="beta-inner">
+<!-- blogger -->
+<div id="user-blogger">
+<h3 class="widget-header">Blogger</h3>
+<!-- title -->
+<div id="user-blogger-head" class="clr">
+<mt:Pages>
+<!-- img -->
+<div class="left">
+<MTPageAssets><img src="<$MTAssetThumbnailURL width="140"$>" /></MTPageAssets>
+</div>
+<!-- /img -->
+<div class="right">
+<table width="150" height="140" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><h2 class="titleID_<$MTBlogID$>"><$mt:PageTitle$></h2></td>
+</tr>
+</table>
+</div>
+</div>
+<!-- /title -->
+<!-- content -->
+<div id="user-blogger-body">
+<$MTPageBody$>
+</div>
+<!-- /content -->
+</mt:Pages>
+</div>
+<!-- /blogger -->
+<!-- recent-posts -->
+<div class="widget-archive-recent widget-archive widget">
+<h3 class="widget-header">Recent Posts</h3>
+<!-- recent-content -->
+<div class="widget-content">
+<dl>
+<!-- -->
+<mt:Entries limit="3">
+<a href="<$mt:EntryPermaLink$>">
+<dt><$mt:EntryDate language="en" format="%Y %B,%d"$></dt>
+<dd><$mt:EntryTitle$></dd>
+</a>
+<!-- -->
+</mt:Entries>
+</dl>
+</div>
+<!-- recent-content -->
+</div>
+<!-- /recent-posts -->
+
+
+<mt:Ignore>
+<!-- category -->
+<mt:IfArchiveTypeEnabled archive_type="Category">
+
+<mt:TopLevelCategories>
+
+<MTSubCatsIsFirst>
+<div class="widget-archive widget-archive-category widget">
+<h3 class="widget-header">Category</h3>
+<div class="widget-content">
+<!-- list -->
+<ul class="pkg">
+</MTSubCatsIsFirst>
+
+<$mt:setvar name="cat_count" value="1"$>
+<mt:if tag="CategoryCount" eq="0">
+<mt:else>
+<li class="<MTIf name="cat_count" op="%" value="2" eq="0">br</MTIf>"><a href="<$mt:CategoryArchiveLink$>"<mt:If tag="CategoryDescription"> title="<$mt:CategoryDescription remove_html="1" encode_html="1"$>"</mt:If>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a></li>
+<mt:Else><li class="<MTIf name="cat_count" op="%" value="2" eq="0">br</MTIf>"><$mt:CategoryLabel$></mt:If>
+<$mt:SubCatsRecurse$>
+</li>
+<mt:SubCatIsLast>
+</ul>
+</div>
+</div>
+</mt:SubCatIsLast>
+<!-- /list -->
+<$mt:setvar name="cat_count" op="+" value="1"$>
+</mt:TopLevelCategories>
+</mt:IfArchiveTypeEnabled>
+<!-- /category -->
+</mt:Ignore>
+
+
+
+<!-- category -->
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<$mt:setvar name="cat_count" value="0"$>
+<$mt:setvar name="total" value="0"$>
+<mt:TopLevelCategories><mt:if tag="CategoryCount" ne="0"><$mt:setvar name="total" op="++"$></mt:if></mt:TopLevelCategories>
+
+
+<mt:TopLevelCategories>
+
+    <mt:if tag="CategoryCount" eq="0">
+    <mt:else>
+    	<$mt:setvar name="cat_count" op="++"$>
+    	<mt:if name="cat_count" eq="1">
+            <div class="widget-archive widget-archive-category widget">
+            <h3 class="widget-header">Category</h3>
+            <div class="widget-content">
+            <!-- list -->
+            <ul class="pkg">
+        </mt:if>
+        
+        <li class="<MTIf name="cat_count" op="%" value="2" eq="0">br</MTIf>"><a href="<$mt:CategoryArchiveLink$>"<mt:If tag="CategoryDescription"> title="<$mt:CategoryDescription remove_html="1" encode_html="1"$>"</mt:If>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a></li>
+        
+        <mt:if name="cat_count" eq="$total">
+        </ul>
+        </div>
+        </div>
+        </mt:if>
+        
+    </mt:if>
+    
+    <!-- /list -->
+    
+
+</mt:TopLevelCategories>
+</mt:IfArchiveTypeEnabled>
+<!-- /category -->
+
+
+<!-- monthly & blogger -->
+<div class="widget-wrp">
+<!-- monthly --> 
+<mt:ArchiveList archive_type="Monthly">
+<mt:ArchiveListHeader>
+<div class="widget-archive-monthly widget-archive widget">
+<h3 class="widget-header">MONTHLY ARCHIVE</h3>
+<!-- monthly-content -->
+<div class="widget-content">
+<ul>
+</mt:ArchiveListHeader>
+<li class="<MTIf name="mon_count" op="%" value="2" eq="1">br</MTIf>"><a href="<$mt:ArchiveLink$>"><$mt:ArchiveDate language="en" format="%B %Y"$> (<$mt:ArchiveCount$>)</a></li>
+<$mt:setvar name="mon_count" op="+" value="1"$>
+<mt:ArchiveListFooter>
+</ul>
+</div>
+<!-- monthly-content -->
+</div>
+</mt:ArchiveListFooter>
+</mt:ArchiveList>
+<!-- monthly -->
+</div>
+<!-- /monthly & blogger -->
+<!-- tag -->
+<$mt:setvar name="tag_count" value="1"$>
+
+
+<MTSetVar name="i" value="10">
+<MTEntries>
+
+    <MTEntryTags>
+    	<$MTTagName setvar="tagname"$>
+        <MTUnless name="seen{$tagname}">
+            <MTIf name="i" gt="0">
+                <MTSetVar name="i" op="--">
+                <MTSetVar name="seen" key="$tagname" value="1">
+                <MTSetVarBlock name="push(tag_htmls)"><li<MTIf name="tag_count" op="%" value="2" eq="0"> class="br"</MTIf>><a href="<$mt:TagSearchLink$>"><$mt:TagName$></a></li></MTSetVarBlock>
+                <$mt:setvar name="tag_count" op="+" value="1"$>            
+            </MTIf>
+        </MTUnless>
+    </MTEntryTags>
+    
+</MTEntries>
+
+<!-- loop -->
+<MTLoop name="tag_htmls">
+
+<mt:if name="__first__">
+<div class="widget-archive widget-tag-cloud widget">
+<h3 class="widget-header">TAGS</h3>
+<!-- tag-content -->
+<div class="widget-content">
+<ul>
+</mt:if>
+<MTVar name="__value__">
+
+
+<mt:if name="__last__">
+</ul>
+</div>
+<!-- /tag-content -->
+</div>
+</mt:if>
+
+</MTLoop>
+<!-- /loop -->
+
+
+
+
+
+</mt:Tags>
+<!-- /tag -->
+
+<!-- ad -->
+<$MTInclude file="../../shared/include/module/ad.html" ssi="1"$>
+<!-- /ad -->
+<!-- bloggers -->
+<$MTInclude file="../../shared/include/module/mt-bloggers.html" ssi="1"$>
+<!-- /bloggers -->
+</div>
+</div>
+</MTApplyModifier>

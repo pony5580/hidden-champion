@@ -1,0 +1,114 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle"><$MTEntryTitle$> | <mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages> | BLOG | HIDDEN-CHAMPION.NET |  「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription"><$MTEntryBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords"><$mt:EntryTitle$>, <MTEntryTags glue=", "><$MTTagLabel$></MTEntryTags><mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages> , HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>" />
+<script type="text/javascript" src="<$mt:BlogURL$>blog.js"></script>
+<$mt:EntryTrackbackData$>
+</mt:SetVarBlock>
+<mt:Ignore><!-- otherMeta --></mt:Ignore>
+<mt:SetVarBlock name="otherMeta">
+<MTSetvarblock name="ogimage"><MTEntryAssets sort_order="ascend" lastn="1"><$MTAssetURL$></MTEntryAssets></MTSetvarblock>
+<meta property="og:image" content="<mt:If name='ogimage'><$MTGetvar name='ogimage'><mt:Else><mt:Pages><MTPageAssets><$MTAssetThumbnailURL width="140"$></MTPageAssets></mt:Pages></mt:If>">
+</mt:SetVarBlock>
+
+
+<$mt:Include module="HTML-Header" body_id="page-blogger" blog_id="23"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">Home</a></span> &gt;
+<span><a href="/blog/">Blogs</a></span> &gt;
+<span><a href="<$MTBlogURL$>"><mt:Pages><$mt:PageTitle encode_html="1"$></mt:Pages></a></span> &gt; 
+<span><$MTEntryTitle$></span>
+</div>
+<!-- topicpath -->
+
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+
+<!-- widget-blog -->
+<div class="widget-blog-orgin widget entry-archive">
+
+<h3 id="blog-page-title" class="widget-header">Original Blog</h3>
+
+<$mt:Include module="EntryBody"$>
+
+
+
+
+ 
+<!-- page-navigation -->
+<div class="prevnext">
+<MTEntryPrevious><p class="prevEntry"><a href="<$mt:EntryPermalink$>"><span>&lt;</span><$mt:EntryTitle$></a></p></MTEntryPrevious>
+<MTEntryNext><p class="nextEntry"><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle$><span>&gt;</span></a></p></MTEntryNext>
+</div>
+<!-- /page-navigation -->
+
+<$mt:Include module="トラックバック"$>
+<$mt:Include module="Comment"$>
+
+</div>
+<!-- /widget-blog -->
+
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- alpha -->
+        
+<!-- beta -->
+<!--#include virtual="../../mt-sideMenu.html" -->
+<!-- /beta -->      
+      
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+
+<!-- footer --> 
+<!--#include virtual="/shared/include/common/footer.html" -->  
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" --> 
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+sortBloggers();
+})
+</script>
+<script type="text/javascript">
+<!--
+mtAttachEvent("load", mtEntryOnLoad);
+mtAttachEvent("unload", mtEntryOnUnload);
+//-->
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer" blog_id="1"$>
+</MTApplyModifier>

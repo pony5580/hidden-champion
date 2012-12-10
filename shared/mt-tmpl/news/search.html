@@ -1,0 +1,218 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- searchResultsFlag --></mt:Ignore>
+<mt:SetVar name="searchResultsFlag" value="1">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">[ <$mt:SearchString$> ] Search Result | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- stylesheets --></mt:Ignore>
+<mt:SetVarBlock name="stylesheets">
+<script type="text/javascript">
+/* <![CDATA[ */
+var user = <$mt:UserSessionState$>;
+<mt:IfMoreResults>
+function getResults(page) {
+    page = parseInt(page);
+    if (timer) window.clearTimeout(timer);
+    var xh = mtGetXmlHttp();
+    if (!xh) return false;
+    var res = results[page];
+    if (!res) return;
+    var url = res['next_url'];
+    if (!url) return;
+
+    xh.open('GET', url + '&format=js', true);
+    xh.onreadystatechange = function() {
+        if ( xh.readyState == 4 ) {
+            if ( xh.status && ( xh.status != 200 ) ) {
+                // error - ignore
+            } else {
+                try {
+                    var page_results = eval("(" + xh.responseText + ")");
+                    if ( page_results['error'] == null )
+                        results[page + 1] = page_results['result'];
+                } catch (e) {
+                }
+            }
+        }
+    };
+    xh.send(null);
+}
+
+function swapContent(direction) {
+    if ( direction == undefined ) direction = 1;
+    var page_span = document.getElementById('current-page');
+    if (!page_span) return true;
+    var next_page = direction + parseInt(page_span.innerHTML);
+    var res = results[next_page];
+    if (!res) return true;
+    var content = res['content'];
+    if (!content) return true;
+    var div = document.getElementById('search-results');
+    if (!div) return true;
+    div.innerHTML = content;
+    timer = window.setTimeout("getResults(" + next_page + ")", 1*1000);
+    window.scroll(0, 0);
+    return false;
+}
+<mt:Else><mt:IfPreviousResults>
+function swapContent(direction) {
+return true;
+}</mt:IfPreviousResults>
+</mt:IfMoreResults>
+/* ]]> */
+</script>
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header" body_id="page-news" blog_id="1"$>
+
+<body>
+<div id="wrapper">
+	<!--header-->
+	<$MTInclude file="/shared/include/common/header.html" ssi="1"$>
+	<!--/header--> 
+	<!--nav_news_category-->
+	<$mt:Include module="NavNewsCategory"$>
+	<!--/nav_news_category-->
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; 
+			<span><a href="/news/">NEWS</a></span> &gt; 
+			<mt:IfStraightSearch>
+			<span>[<$mt:SearchString$>]Search Result</span>
+			</mt:IfStraightSearch>
+			<mt:IfTagSearch>
+			<span>TAG : [ <$mt:SearchString$> ] Search Result</span>
+			</mt:IfTagSearch> 
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--contents_left-->
+			<div id="contents_left"> 
+				<section id="news_search" class="search">
+				<mt:SetVarTemplate id="search_results" name="search_results">  
+				<mt:SearchResults>
+				<mt:SearchResultsHeader>
+				<!-- search-results -->
+				<div id="search-results">
+				<!--currentpage-->
+				<span id="current-page" style="display:none"><$mt:CurrentPage$></span>
+				<!--/currentpage-->
+				<!--search title-->
+				<section class="search_title">
+				<h1>
+				<mt:IfStraightSearch>
+					[<$mt:SearchString$>] Search Result
+				</mt:IfStraightSearch>
+				<mt:IfTagSearch>
+				TAG : [ <$mt:SearchString$> ] Search Result
+				</mt:IfTagSearch>
+				</h1>
+				</section>
+				<!--/search title-->
+				<!-- search-results-container -->
+				<div class="search-results-container autopagerize_page_element">
+				<section id="list_block" class="cf">
+				</mt:SearchResultsHeader>
+				
+				<$mt:Include module="EntryBlock" blog_id="1"$>
+				
+				<mt:SearchResultsFooter>
+				</section>
+				</div>
+				<div class="autopagerize_insert_before"></div>
+				<mt:Ignore>Used with the ajax search capability of the new search class</mt:Ignore>
+				<!--pagenav-->
+				<div id="pagenav">
+					<nav>
+						<ul class="cf">
+							<mt:IfPreviousResults><li><a href="<$mt:PreviousLink$>" rel="prev" onclick="return swapContent(-1);">Previous</a></li></mt:IfPreviousResults><mt:PagerBlock><mt:IfCurrentPage><li><span class="current_page"><$mt:Var name="__value__"$></span></li><mt:Else><li><a href="<$mt:PagerLink$>" class="link_page"><$mt:Var name="__value__"$></a></li></mt:IfCurrentPage></mt:PagerBlock><mt:IfMoreResults><li><a href="<$mt:NextLink$>" rel="next" onclick="return swapContent();">Next</a></li></mt:IfMoreResults>
+						</ul>
+					</nav>
+				</div>
+				<!--/pagenav-->
+</div>
+</mt:SearchResultsFooter>
+<mt:Ignore><!-- ▲searchResultsFooter --></mt:Ignore>
+
+</mt:SearchResults>
+</mt:SetVarTemplate>
+
+<$mt:Var name="search_results"$>
+
+
+<mt:NoSearchResults>
+<section class="search">
+<section class="search_title">
+				<h1>
+    <mt:IfStraightSearch>
+    「<$mt:SearchString$>」と一致するもの
+    </mt:IfStraightSearch>
+    <mt:IfTagSearch>
+    タグ「<$mt:SearchString$>」が付けられているもの
+    </mt:IfTagSearch>
+</h1>
+</section>
+<section class="search_body">
+「<$mt:SearchString$>」と一致する結果は見つかりませんでした。
+</mt:NoSearchResults>
+</section>
+</section>
+<mt:NoSearch>
+<section class="search">
+<section class="search_title">
+				<h1>例</h1>
+</section>
+<section class="search_body">
+すべての単語が順序に関係なく検索されます。フレーズで検索したいときは引用符で囲んでください。</p>
+<blockquote>
+    <p><code>"movable type"</code></p>
+</blockquote>
+<p>AND、OR、NOTを入れることで論理検索を行うこともできます。</p>
+<blockquote>
+    <p><code>個人 OR 出版</code></p>
+    <p><code>個人 NOT 出版</code></p>
+</blockquote>
+</section>
+</section>
+</mt:NoSearch>
+
+<mt:Ignore>Used with the ajax search capability of the new search class</mt:Ignore>
+<mt:IfMoreResults>
+<script type="text/javascript">
+<!--
+var div = document.getElementById('search-results');
+var results = {
+    '<$mt:CurrentPage$>': {
+        'content': div.innerHTML,
+        'next_url': '<$mt:NextLink$>'
+    }
+};
+var timer = window.setTimeout("getResults(" + <$mt:CurrentPage$> + ")", 1*1000);
+//-->
+</script>
+</mt:IfMoreResults>
+				</section>
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<$MTInclude file="/shared/include/common/mt-sideMenu.html" ssi="1"$>
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<$MTInclude file="/shared/include/common/footer.html" ssi="1"$>
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" --> 
+</body>
+</html>
+</MTApplyModifier>

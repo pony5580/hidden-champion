@@ -1,0 +1,139 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+
+<$mt:Include module="HTML-Header" body_id="page-top"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+
+<!-- features -->
+<!--#include virtual="/shared/include/top/features.html" -->
+<!-- features -->
+        
+<!-- news -->
+<div class="widget-news widget">
+<h3 class="widget-header">NEWS</h3>
+<!-- news-list -->    
+<div id="news-list" class="clr">
+
+<mt:MultiBlog blog_ids="1">
+<MTPageContents count="10">
+<mt:Entries>
+<MTIf name="__odd__"><div style="clear:both; height:1px;"></div></MTIf>
+<$mt:EntryTrackbackData$>
+<!-- entry -->
+<div id="entry-<$mt:EntryID$>" class="entry-asset-s <MTIf name="__odd__">odd<MTElse>even</MTIf> <MTIf name="__first__">first</MTIf>">
+<!-- entry-image -->
+<mt:EntryAssets type="image" lastn="1" sort_order="ascend">
+<div class="entry-image"><a href="<$mt:EntryPermalink$>"><img src="<$MTAssetThumbnailURL width="260"$>" width="260"/></a></div>
+</mt:EntryAssets>
+<!-- /entry-image -->
+<!-- entry-meta -->
+<div class="entry-meta">
+<p class="entryDate"><$mt:EntryDate language="en" format="%Y %B,%d"$></p>
+<h4 class="entryTitle"><a href="<$mt:EntryPermalink$>" rel="bookmark"><$mt:EntryTitle$></a></h4>
+<mt:If tag="EntryDataNews_description">
+<div class="entrySubTitle"><$mt:EntryDataNews_description filters="__default__"$></div>
+</mt:If>
+<p class="entryExcerpt"><$MTEntryBody convert_breaks="0" words="120"$>...</p>
+<p class="entryMore"><a href="<$mt:EntryPermalink$>">Read More</a></p>
+</div>
+<!-- entry-meta -->        
+</div>
+<$MTPageSeparator$>
+<!-- /entry -->        
+</mt:Entries>  
+</MTPageContents>
+
+</div>
+<!-- /news-list -->
+
+<!-- pageNav -->
+<ul class="pageNav">
+<MTIfPageBefore><$MTPageBefore delim="&lt;&lt; Previous"$></MTIfPageBefore>
+<$MTPageLists link_start="<li>" link_close="</li>"$>
+<MTIfPageNext><$MTPageNext delim="NEXT &gt;&gt;"$></MTIfPageNext>
+</ul>
+<!-- /pageNav -->
+</mt:MultiBlog>
+
+</div>
+<!-- /news -->
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- alpha -->
+        
+<!-- beta -->
+<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+<!-- /beta -->      
+      
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+
+<!-- footer --> 
+<!--#include virtual="/shared/include/common/footer.html" -->  
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" --> 
+<script type="text/javascript"src="/shared/js/plugin/nivoslider/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$('#top-banner').nivoSlider({ effect:'fade', pauseTime:5000, pauseOnHover:false,controlNav:false,directionNav:false});
+
+$(function(){
+sortBloggers();
+checkReadMorePosi();
+})
+
+function checkReadMorePosi(){
+var ent = $('.entry-asset-s');
+var index = 0;
+while (index <= ent.length) {
+var he1 = $(ent[index]).height();
+var he2 = $(ent[index+1]).height()
+var maxNum = Math.max(he1, he2);
+if(maxNum == he1){
+$(ent[index+1]).find('.entryMore').css({'padding-top': (he1 - he2) + 'px'});
+} else {
+$(ent[index]).find('.entryMore').css({'padding-top': (he2 - he1) + 'px'});
+}
+index += 2;
+}
+}
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer"$>
+</MTApplyModifier>

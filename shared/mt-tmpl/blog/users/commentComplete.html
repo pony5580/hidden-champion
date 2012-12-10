@@ -1,0 +1,108 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">コメント完了 | HIDDEN-CHAMPION.NET |  「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">HIDDEN-CHAMPION.NET |  「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ヒドゥン・チャンピオン</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds"></mt:SetVarBlock>
+
+<mt:If name="comment_confirmation">
+<$mt:Var name="page_title" value="確認"$>
+<$mt:Var name="message" value="コメントを投稿しました。"$>
+<mt:Else name="comment_pending">
+<$mt:Var name="page_title" value="コメントありがとうございます。"$>
+<$mt:Var name="message" value="コメントは現在承認されるまで公開を保留されています。"$>
+<mt:Else name="comment_error">
+<$mt:Var name="page_title" value="コメント投稿エラー"$>
+<mt:SetVarBlock name="message">コメントを投稿できませんでした。エラー: <$mt:ErrorMessage$></mt:SetVarBlock>
+</mt:If>
+<mt:SetVarBlock name="title"><$mt:BlogName encode_html="1"$>: <$mt:Var name="page_title"$></mt:SetVarBlock>
+<mt:SetVarBlock name="html_footer">
+<script type="text/javascript">
+/* <![CDATA[ */
+var user = <$mt:UserSessionState$>;
+var is_preview = true;
+/* ]]> */
+</script>
+</mt:SetVarBlock>
+
+
+<$mt:Include module="HTML-Header" body_id="page-blogger" blog_id="23"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<$mt:Include file="../../shared/include/common/header.html" ssi="1"$>
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">Home</a></span> &gt;
+<span><a href="/blog/">Blogs</a></span> &gt;
+<span><$mt:Var name="message"$></span>
+</div>	
+<!-- topicpath -->
+
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">	
+
+<!-- widget-blog -->
+<div class="widget-blog-orgin widget entry-archive">
+<h3 id="blog-page-title" class="widget-header">Original Blog</h3>
+<h1 id="page-title" style="border-top: 1px solid #000; padding-top: 9px;"><$mt:Var name="page_title"$></h1>
+<!-- commentWrp -->
+<div class="commentWrp" style="text-align: center; padding: 100px 0px;">
+<p><$mt:Var name="message"$></p>
+<a href="<mt:If name="comment_error">javascript:history.back()<mt:Else><$mt:EntryLink$></mt:If>" class="btn" style="width: 10em; margin: 0px auto; font-size: 120%;">元の記事に戻る</a>
+</div>
+<!-- /commentWrp -->
+
+</div>
+<!-- /widget-blog -->
+
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- alpha -->
+        
+<!-- beta -->
+<$mt:Include file="mt-sideMenu.html" ssi="1"$>
+<!-- /beta -->      
+      
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+
+<!-- footer --> 
+<$mt:Include file="../../shared/include/common/footer.html" ssi="1"$>
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<$mt:Include file="../../shared/include/common/javascripts.html" ssi="1"$>
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+	sortBloggers();
+})
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer" blog_id="1"$>
+</MTApplyModifier>

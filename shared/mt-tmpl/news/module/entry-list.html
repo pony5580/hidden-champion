@@ -1,0 +1,34 @@
+<!--article_entry-->
+<article class="cf">
+	<mt:EntryAssets type="image" lastn="1" sort_order="ascend">
+	<figure>
+		<a href="<$mt:EntryPermalink$>">
+		<mt:If tag="TopNewsThumbnail">
+		<MTTopNewsThumbnailAsset><img src="<$MTAssetURL$>" /></MTTopNewsThumbnailAsset>
+		<mt:Else>
+			<img src="<$MTAssetThumbnailURL width="240"$>" width="240"/>
+		</mt:If>
+		</a>
+	</figure>
+	</mt:EntryAssets>
+	<div class="right">
+		<header>
+			<a href="<$mt:EntryPermalink$>" rel="bookmark"><h1><$mt:EntryTitle$></h1></a>
+			<mt:If tag="EntryDataNews_description">
+			<h2><$mt:EntryDataNews_description filters="__default__" remove_html="1"$></h2>
+			</mt:If>
+		</header>
+		<p><$MTEntryBody convert_breaks="0" words="76"$>...</p>
+		<footer>
+			<div class="f_left">
+				<time datetime="<$mt:EntryDate language="en" format="%Y-%m-%d"$>"><$mt:EntryDate language="en" format="%B %d, %Y"$></time>
+			</div>
+			<div class="f_right cf">
+				<div class="share cf" ><span class="facebook" data-url="<$MTEntryPermalink$>" data-text="<$MTEntryTitle encode_html="1"$>">likes</span> <span class="twitter" data-url="<$MTEntryPermalink$>" data-text="<$MTEntryTitle encode_html="1"$>">tweet</span>
+				</div>
+			</div>
+		</footer>
+		
+	</div>
+</article>
+<!--/article_entry-->

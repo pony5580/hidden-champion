@@ -1,0 +1,138 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">Blogs | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- stylesheets --></mt:Ignore>
+<mt:SetVarBlock name="stylesheets"><link type="text/css" href="/shared/style/exclusive/blog.css" rel="stylesheet"></mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/blog/atom.xml" />
+</mt:SetVarBlock>
+
+
+<$mt:Include module="HTML-Header" body_id="page-blogs" blog_id="23"$>
+<!-- container -->
+<div id="container">
+<!-- container-inner -->
+<div id="container-inner">
+
+<!-- header -->
+<!--#include virtual="/shared/include/common/header.html" -->
+<!-- /header -->
+
+<!-- content -->
+<div id="content">
+<!-- content-inner -->
+<div id="content-inner">
+<!-- topicpath -->
+<div id="breadcrumb">
+<span><a href="/">HOME</a></span> >
+<span>Blogs</span>
+</div>
+<!-- /topicpath -->
+
+<!-- alpha -->
+<div id="alpha">
+<!-- alpha-inner -->
+<div id="alpha-inner">
+
+<h3 id="blog-page-title" class="widget-header">Original Blog</h3>       
+
+<!-- blogs -->          
+<div class="widget-blog-orgin widget">
+<!-- blogs-wrp -->
+<div class="blogs-wrp clr">
+        
+<mt:IfNonZero tag="BlogEntryCount" include_blogs="children">
+<MTSetVar name="count" value="0">
+<mt:MultiBlog mode="loop" exclude_blogs="1,4,6,7,20,23,31,32, 29">
+<mt:Entries lastn="1">
+<MTSetVar name="count" op="++">
+<mt:Pages lastn="1">
+
+
+<MTIf name="count" op="mod" value="6" eq="1">
+<div class="step clr">
+</MTIf>
+
+
+<div class="article<MTIf name="count" op="mod" value="6" eq="0"> br</MTIf>">
+<a href="<$MTBlogURL$>">
+<MTPageAssets>
+<span class="imgWrp">
+<table width="128" height="128" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td><img src="<$MTAssetThumbnailURL width="128"$>" /></td>
+</tr>
+</table>
+</span>
+</MTPageAssets>
+</mt:Pages>
+<span class="dateTime"><$mt:EntryDate format="%Y/%B/%e" language="ja"></span>
+<mt:Pages lastn="1">
+<span class="name"><$mt:PageTitle$></span>
+</mt:Pages>
+<span class="new pngfix"></span>
+</a>
+</div>
+
+<MTIf name="count" op="mod" value="6" eq="0"></div></MTIf>
+
+</mt:Entries>
+</mt:MultiBlog>
+</mt:IfNonZero>   
+  
+</div>
+<!-- blogs-wrp -->
+</div>
+<!-- blogs -->  
+        
+</div>
+<!-- /alpha-inner -->
+</div>
+<!-- /alpha end -->
+        
+</div>
+<!-- /content-inner -->
+</div>
+<!-- /content -->
+    
+<!-- footer -->    
+<!--#include virtual="/shared/include/common/footer.html" -->
+<!-- /footer -->
+
+</div>
+<!-- container-inner -->
+</div>
+<!-- /container -->
+<!-- javascripts -->
+<!--#include virtual="/shared/include/common/javascripts.html" -->
+<!--[if IE 6 ]>
+<script type="text/javascript" src="/shared/js/lib/DD_belatedPNG.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/shared/js/plugin/jScrollPane.js"></script>
+<script type="text/javascript">
+$(function(){
+print_new();
+});
+
+function print_new() {
+var delDay = 3;
+var newDay = new Date();
+$("div.article").each(function(){
+var entryTIme = $(this).find(".dateTime").get(0).innerHTML;
+var oldDay = new Date(entryTIme);
+var d = (newDay - oldDay) / (1000 * 24 * 3600);
+if(d <= delDay){
+$(this).addClass("newEntry");
+}
+});
+
+}
+</script>
+<!-- /javascripts -->
+<$mt:Include module="HTML-Footer" blog_id="1"$>
+</MTApplyModifier>

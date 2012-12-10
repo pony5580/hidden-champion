@@ -1,0 +1,70 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<aside id="sidebar">
+	<!--bloger-->
+	<section class="bloger">
+		<!--bloger profile-->
+		<mt:Pages>
+		<section class="profile_photo cf">
+		<table width="320" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td class="photo"><div><MTPageAssets><img src="<$MTAssetThumbnailURL width="140"$>"></MTPageAssets></div></td>
+		<td class="author titleID_<$MTBlogID$>"><$mt:PageTitle$></td>
+		</tr>
+		</table>	
+		</section>
+		<section class="profile">
+			<div class="profile_inner">
+				<$MTPageBody$>
+			</div>
+		</section>
+		</mt:Pages>
+		<!--/bloger profile-->
+		<!--bloger recent posts-->
+		<section class="recents">
+			<div class="recents_inner">
+			<h1>Recent Posts</h1>
+				<mt:Entries limit="3">
+				<!--bloger recent post-->
+				<a href="<$mt:EntryPermaLink$>">
+				<article class="recent">
+					<time datetime="<$mt:EntryDate format_name="iso8601"$>"  pubdate="pubdate" class="entry-date"><$mt:EntryDate language="en" format=" %B, %d %Y"$></time>
+					<h2><$mt:EntryTitle$></h2>
+				</article>
+				</a>
+				<!--/bloger recent post-->
+				</mt:Entries>
+			</div>
+		</section>
+		<!--/bloger recent posts-->
+		<!--bloger monthly archive-->
+		<mt:ArchiveList archive_type="Monthly">
+		<mt:ArchiveListHeader>
+		<section class="archive">
+			<div class="archive_inner">
+				<h1>Monthly Archives</h1>
+				<ul class="cf">
+		</mt:ArchiveListHeader>
+		<li class="<MTIf name="mon_count" op="%" value="2" eq="1">br</MTIf>"><a href="<$mt:ArchiveLink$>"><$mt:ArchiveDate language="en" format="%B %Y"$> (<$mt:ArchiveCount$>)</a></li>
+		<$mt:setvar name="mon_count" op="+" value="1"$>
+		<!--<li><a href="#">November 2012 (1)</a></li>-->
+		<mt:ArchiveListFooter>
+				</ul>
+			</div>
+		</section>
+		</mt:ArchiveListFooter>
+		</mt:ArchiveList>
+		<!--/bloger monthly archive-->
+	</section>
+	<!--/bloger-->
+	<!--ads01-->
+	<section class="ads">
+		<hgroup>
+			<h1><a href="#"><img src="" width="300" alt=""></a></h1>
+		</hgroup>
+	</section>
+	<!--/ads01-->
+	<!--blogs-->
+	<!--#include virtual="/shared/include/module/mt-bloggers.html" -->
+	<!--/blogs-->
+</aside>
+</MTApplyModifier>

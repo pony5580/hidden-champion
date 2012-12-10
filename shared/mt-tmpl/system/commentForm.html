@@ -1,0 +1,60 @@
+<!-- form -->    
+<mt:IfCommentsAccepted>
+<div class="comments-open" id="comments-open">
+<h2 class="comments-open-header">Add a Comment</h2>
+<div class="comments-open-content">
+<div id="comment-greeting"></div>
+<form method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+<input type="hidden" name="static" value="1" />
+<input type="hidden" name="entry_id" value="<$mt:EntryID$>" />
+<input type="hidden" name="__lang" value="<$mt:BlogLanguage$>" />
+<input type="hidden" name="parent_id" value="<$mt:CommentParentID$>" id="comment-parent-id" />
+<input type="hidden" name="armor" value="1" />
+<input type="hidden" name="preview" value="" />
+<input type="hidden" name="sid" value="" />
+<div id="comments-open-data">
+<div id="comment-form-name" class="clr">
+<input id="comment-author" type="text" name="author" size="30" value="<mt:If name="comment_preview"><$mt:CommentAuthor encode_html="1"$></mt:If>" />
+<label for="comment-author">Name</label>
+</div>
+<div id="comment-form-email" class="clr">
+<input id="comment-email" type="text" name="email" size="30" value="<mt:If name="comment_preview"><$mt:CommentEmail encode_html="1"$></mt:If>" />
+<label for="comment-email">Mail</label>
+</div>
+<div id="comment-form-url" class="clr">
+<input id="comment-url" type="text" name="url" size="30" value="<mt:If name="comment_preview"><$mt:CommentURL encode_html="1"$></mt:If>" />
+<label for="comment-url">URL</label>
+</div>
+
+</div>
+<div id="comment-form-reply"<mt:IfCommentParent><mt:Else> style="display:none"</mt:IfCommentParent>>
+<input type="checkbox" id="comment-reply" name="comment_reply" value="<$mt:CommentParentID$>"<mt:IfCommentParent> checked="checked"</mt:IfCommentParent> onclick="mtSetCommentParentID()" />
+
+<label for="comment-reply" id="comment-reply-label">Reply to <mt:IfCommentParent><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></mt:IfCommentParent></label>
+</div>
+<div id="comments-open-text">
+<textarea id="comment-text" name="text" rows="1" cols="50"><mt:If name="comment_preview"><$mt:CommentBody autolink="0" sanitize="0" convert_breaks="0" encode_html="1"$></mt:If></textarea>
+</div>
+<div id="comments-open-captcha" class="clr"><$mt:CaptchaFields$></div>
+<div id="comments-open-footer">
+<mt:Ignore>
+<input type="submit" accesskey="v" name="preview_button" id="comment-preview" class="btn" value="確認" onclick="this.form.preview.value='1';" />
+</mt:Ignore>
+<input type="submit" accesskey="s" name="post" id="comment-submit" class="btn" value="SUBMIT" />
+<mt:If name="comment_preview">
+<input type="button" name="cancel" id="comment-cancel" value="キャンセル" onclick="window.location='<$mt:EntryPermalink$>'" />
+</mt:If>
+</div>
+</form>
+</div>
+</div>
+<mt:SetVarBlock name="html_footer">
+<script type="text/javascript">
+<!--
+mtAttachEvent("load", mtEntryOnLoad);
+mtAttachEvent("unload", mtEntryOnUnload);
+//-->
+</script>
+</mt:SetVarBlock>
+</mt:IfCommentsAccepted>    
+<!-- /form -->

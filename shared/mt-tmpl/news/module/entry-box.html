@@ -1,0 +1,40 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+<!--list_block entry-->
+<mt:If name="__counter__" op="%" value="3" eq="0">
+<article class="br">
+<mt:Else>
+<article>
+</mt:If>
+	<a href="<$mt:EntryPermalink$>">
+		<figure>
+		<mt:EntryAssets type="image" lastn="1" sort_order="ascend">
+		<mt:If tag="TopNewsThumbnail">
+		<MTTopNewsThumbnailAsset>
+		<img src="<$MTAssetURL$>" />
+		</MTTopNewsThumbnailAsset>
+		<mt:Else>
+		<img src="<$MTAssetThumbnailURL$>" width="214">
+		</mt:If>
+		
+		</mt:EntryAssets>
+		</figure>
+		</a>
+	<div class="list_block_body">
+		<div class="list_block_body_inner">
+			<header>
+				<time datetime="<$mt:EntryDate language="en" format="%Y-%m-%d"$>"><$mt:EntryDate language="en" format="%B %d, %Y"$></time>
+				<h1><a href="<$mt:EntryPermalink$>" rel="bookmark"><$mt:EntryTitle$></a></h1>
+				<div class="meta">
+					<mt:If tag="EntryDataNews_description">
+			<h2><$mt:EntryDataNews_description filters="__default__"$></h2>
+			</mt:If>
+				</div>
+			</header>
+			<p><$MTEntryBody convert_breaks="0" words="45"$>...</p>
+			<footer><span class="facebook" data-url="<$MTEntryPermalink$>" data-text="<$MTEntryTitle encode_html="1"$>">likes</span>
+<span class="twitter" data-url="<$MTEntryPermalink$>" data-text="<$MTEntryTitle encode_html="1"$>">tweet</span></footer>
+		</div>
+	</div>
+</article>
+<!--/list_block entry-->
+</MTApplyModifier>

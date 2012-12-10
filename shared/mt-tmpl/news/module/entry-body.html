@@ -1,0 +1,59 @@
+<div id="entry-<$mt:EntryID$>" class="entry-asset asset hentry">
+<!-- asset-header -->
+<div class="asset-header">
+<p class="entryDate"><$mt:EntryDate language="en" format="%Y %B,%d"$></p>
+<h1 id="page-title" class="asset-name entry-title"><$mt:EntryTitle$></h1>
+<mt:If tag="EntryDataNews_description">
+<div class="entrySubTitle"><$mt:EntryDataNews_description filters="__default__"$></div>
+</mt:If>
+</div>
+<!-- /asset-header -->
+<!-- asset-content -->
+<div class="asset-content entry-content">
+<mt:If tag="EntryBody">
+<!-- body -->
+<div class="asset-body">
+<$mt:EntryBody$>
+</div>
+<!-- /body -->
+</mt:If>
+<mt:If tag="EntryMore" convert_breaks="0">
+<!-- more -->
+<div id="more" class="asset-more">
+<$mt:EntryMore$>
+</div>
+<!-- /more -->
+</mt:If>
+</div>
+<!-- /asset-content -->
+<!-- asset-footer -->
+<div class="asset-footer">
+<$mt:Include module="カテゴリ"$>
+<$mt:Include module="タグ"$>
+</div>
+<!-- /asset-footer -->
+<!-- service -->
+<div class="asset-footer service">
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="HIDDEN_CHAMPION">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script><$MTMixiCheck$>
+<iframe src="http://www.facebook.com/plugins/like.php?href=<$mt:EntryPermalink$>&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+</div>
+<!-- service -->
+<!-- navigation -->
+<div class="prevnext">
+<MTEntryPrevious>
+<p class="prevEntry"><a href="<$mt:EntryPermalink$>"><span>&lt;</span><$mt:EntryTitle$></a></p>
+</MTEntryPrevious>
+<MTEntryNext>
+<p class="nextEntry"><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle$><span>&gt;</span></a></p>
+</MTEntryNext>
+</div>
+<!-- /navigation -->
+<mt:Ignore>
+ zenback 非表示 masa
+<!-- zenback -->
+<div class="asset-footer zenback">
+<!-- X:S ZenBackWidget --><script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//hidden-champion.net/&nsid=90737434647630835%3A%3A90737453169647914&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script><!-- X:E ZenBackWidget -->
+</div>
+<!-- /zenback -->
+</mt:Ignore>
+</div>

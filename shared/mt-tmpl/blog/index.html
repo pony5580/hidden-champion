@@ -1,0 +1,99 @@
+<MTApplyModifier trim_ex="ltrim,rtrim,trimcr">
+
+<mt:Ignore><!-- pageTitle --></mt:Ignore>
+<mt:SetVarBlock name="pageTitle">BLOGS | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:Ignore><!-- pageDescription --></mt:Ignore>
+<mt:SetVarBlock name="pageDescription">Hidden Champion is a free japanese Magazine featuring “hidden champions” of many cultures. The first issue appeared in August 2003. Since then it comes out 2 times a year and it´s available in good clubs, record shops, cafes and bars.</mt:SetVarBlock>
+<mt:Ignore><!-- pageKeywords --></mt:Ignore>
+<mt:SetVarBlock name="pageKeywords">HIDDEN-CHAMPION, ART, BMX, FASHION, FIXED, MUSIC, SKATE, SNOW, SURF</mt:SetVarBlock>
+<mt:Ignore><!-- feeds --></mt:Ignore>
+<mt:SetVarBlock name="feeds">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://hidden-champion.net/atom.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hidden-champion.net/rsd.xml" />
+</mt:SetVarBlock>
+<$mt:Include module="HTML-Header" body_id="page-blogs" blog_id="23"$>
+<body>
+<div id="wrapper"> 
+	<!--header-->
+	<!--#include virtual="/shared/include/common/header.html" -->
+	<!--/header--> 
+	<!--breadcrumb-->
+	<div id="crumb">
+		<div id="crumb_inner">
+			<span><a href="/">HOME</a></span> &gt; <span>BLOGS</span> 
+		</div>
+	</div>
+	<!--/breadcrumb-->
+	<!--contents-->
+	<div id="contents">
+		<div id="contents_inner" class="cf">
+			<!--contents_left-->
+			<div id="contents_left"> 
+				<!--list_blogers-->
+				<section id="list_blogers">
+					<div id="list_blogers_inner" class="cf">
+						<mt:IfNonZero tag="BlogEntryCount" include_blogs="children">
+						<MTsetVar name="count" value="0">
+						<mt:MultiBlog mode="loop" exclude_blogs="1,4,6,7,20,23,31,32, 29,44,45">
+						<mt:Entries lastn="1">
+						<MTSetVar name="count" value="1" op="+">
+						
+						
+						<!--bloger-->
+						<MTIf name="count" op="%" value="5" eq="0">
+						<article class="br">
+						<MTElse>
+						<article>
+						</MTElse>
+						</MTIf>
+						
+						<mt:Pages lastn="1">
+						<a href="<$MTBlogURL$>">
+						<MTPageAssets>
+						<figure><img src="<$MTAssetThumbnailURL width="124"$>"></figure>
+						</MTPageAssets>
+						</mt:Pages>
+						<span class="dateTime" style="display:none"><$mt:EntryDate format="%Y/%B/%e" language="ja"></span>
+						
+						<mt:Pages lastn="1">
+						<h1><$mt:PageTitle$></h1>
+						
+						</a>
+						</mt:Pages>
+						</article>
+						<!--/bloger-->
+						</mt:Entries>
+						</mt:MultiBlog>
+						</mt:IfNonZero>
+						
+					</div>
+				</section>
+				<!--/list_blogers-->
+				<!--list_blogs-->
+				<section id="list_blogs">
+				<mt:MultiBlog mode="context" exclude_blogs="1,4,6,7,20,23,31,32, 29,44,45">
+				<mt:Entries>
+					<$mt:Include module="EntryBlogList" blog_id="24"$>
+				</mt:Entries>
+				</mt:MultiBlog>
+				</section>
+				<!--/list_blogs-->
+				<!--pagenav-->
+				<!--/pagenav-->
+			</div>
+			<!--/contents_left-->
+			<!--sidebar-->
+			<!--#include virtual="/shared/include/common/mt-sideMenu.html" -->
+			<!--/sidebar-->
+		</div>
+	</div>
+	
+	<!--/contents--> 
+	<!--footer-->
+	<!--#include virtual="/shared/include/common/footer.html" --> 
+	<!--/footer--> 
+</div>
+<!--#include virtual="/shared/include/common/htmlFooter.html" --> 
+</body>
+</html>
+</MTApplyModifier>
