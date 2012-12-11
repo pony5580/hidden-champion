@@ -60,18 +60,40 @@
 						<!--asset-information-->
 						<MTIfNonEmpty tag="EntryDataEventinfoactive">
 						<section class="asset-information">
-							<h2 class="info_title"><$mt:EntryTitle$></h2>
+							<h2 class="info_title">Information</h2>
 							<table width="640">
+							<tr>
+								<td class="gl">Title</td>
+								<td><$mt:EntryTitle$></td>
+							</tr>
 							<mt:If tag="EntryDataEventinfodate">
 								<tr>
 									<td class="gl">Date</td>
 									<td><mt:EntryDataEventinfodate></td>
 								</tr>
 							</mt:If>
+							<mt:If tag="EntryDataEventinfotime">
+								<tr>
+									<td class="gl">Time</td>
+									<td><mt:EntryDataEventinfotime></td>
+								</tr>
+							</mt:If>
+							<mt:If tag="EntryDataEventinfoadmission">
+								<tr>
+									<td class="gl">Admission</td>
+									<td><mt:EntryDataEventinfoadmission></td>
+								</tr>
+							</mt:If>
 							<mt:If tag="EntryDataEventinfovenue">
 								<tr>
 									<td class="gl">Venue</td>
 									<td><mt:EntryDataEventinfovenue></td>
+								</tr>
+							</mt:If>
+							<mt:If tag="EntryDataEventinfoaddress">
+								<tr>
+									<td class="gl">Address</td>
+									<td><mt:EntryDataEventinfoaddress></td>
 								</tr>
 							</mt:If>
 							<mt:If tag="EntryDataEventinfotel">
@@ -114,8 +136,8 @@ js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement
 						<!-- /asset-comment -->
 						<!--page navi-->
 						<section class="prevnext cf">
-							<p class="prevEntry"><a href="http://hidden-champion.net/blog/pony/2012/08/yagi-jam.html">Previous</a></p>
-							<p class="nextEntry"><a href="http://hidden-champion.net/blog/pony/2012/10/cocomo-hallowen-party.html">Next</a></p>
+							<MTEntryPrevious><p class="prevEntry"><a href="<$mt:EntryPermalink$>">Previous</a></p></MTEntryPrevious>
+							<MTEntryNext><p class="nextEntry"><a href="<$mt:EntryPermalink$>">Next</a></p></MTEntryNext>
 						</section>
 						<!--/page navi-->
 					</article>

@@ -1,36 +1,84 @@
 <mt:Ignore>
-
-modify: 2012.12.10
-author: masa
-
-MTのデフォルトのコメントテンプレに変更しました。
-9 - 28行目はいままでのものです適時変更してしまってくださいませ。
-
-<mt:IfCommentsActive>
-<div id="comments" class="comments">
-    <mt:If name="comment_preview">
-    <$mt:Include module="コメント入力フォーム"$>
-    </mt:If>
-    <mt:Comments>
-        <mt:CommentsHeader>
-    <h2 class="comments-header"><$mt:EntryCommentCount singular="Comment(1)" plural="Comment(#)" none="Comment(0)"$></h2>
-    <div class="comments-content">
-        </mt:CommentsHeader>
-        <$mt:Include module="Comment-detail-renew"$>
-        <mt:CommentsFooter>
-    </div>
-        </mt:CommentsFooter>
-    </mt:Comments>
-    <mt:Unless name="comment_preview">
-    <$mt:Include module="コメント入力フォーム"$>
-    </mt:Unless>
-</div>
-</mt:IfCommentsActive>
-</mt:Ignore>
-
-<mt:Ignore>
 <!-- Display comments for the entry/page or commenting form if entry/page is accepting comments -->
 </mt:Ignore>
+<mt:IfCommentsActive>
+
+<section id="comments" class="comments">
+<!-- comments-->
+    <mt:Comments lastn="$comments_per_page">
+        <mt:CommentsHeader>
+		<section id="comments-content" class="comments-content">
+  			<h2 class="comments-title"><$mt:EntryCommentCount singular="Comment(1)" plural="Comment(#)" none="Comment(0)"$></h2>
+        </mt:CommentsHeader>
+        <$mt:Include module="CommentDetailRenew" blog_id="1"$>
+        <mt:CommentsFooter>
+    </section>
+        </mt:CommentsFooter>
+    </mt:Comments>
+<!-- comments-->
+<!--comment form-->
+    <mt:IfCommentsAccepted>
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">Add a Comment</h2>
+        <div class="comments-open-content">
+            <div id="comment-greeting"></div>
+            <form method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+                <input type="hidden" name="static" value="1" />
+                <input type="hidden" name="entry_id" value="<$mt:EntryID$>" />
+                <input type="hidden" name="__lang" value="<$mt:BlogLanguage$>" />
+                <input type="hidden" name="parent_id" value="<$mt:CommentParentID escape="html"$>" id="comment-parent-id" />
+                <input type="hidden" name="armor" value="1" />
+                <input type="hidden" name="preview" value="" />
+                <input type="hidden" name="sid" value="" />
+                <div id="comments-open-data">
+                    <div id="comment-form-name">
+                        <label for="comment-author">Name</label>
+                        <input id="comment-author" name="author" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-email">
+                        <label for="comment-email">Mail</label>
+                        <input id="comment-email" name="email" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-url">
+                        <label for="comment-url">URL</label>
+                        <input id="comment-url" name="url" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                   
+                </div>
+                <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-text">
+                    <label for="comment-text">Comment</label>
+                    <textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtCommentFormOnFocus()"></textarea>
+                </div>
+                <div id="comments-open-captcha" class="cf"></div>
+                <div id="comments-open-footer">
+                    <input type="submit" accesskey="s" name="post" id="comment-submit" value="SUBMIT" />
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+    <!--
+    mtAttachEvent("load", mtEntryOnLoad);
+    mtAttachEvent("unload", mtEntryOnUnload);
+    //-->
+    </script>
+    </mt:IfCommentsAccepted>
+	<!--/comment form-->
+
+</section>
+</mt:IfCommentsActive>
+
+
+
+<mt:Ignore>
+デフォルトのテンプレ
+
 <mt:IfCommentsActive>
 
 <div id="comments" class="comments">
@@ -146,3 +194,4 @@ MTのデフォルトのコメントテンプレに変更しました。
 </div>
 </mt:IfCommentsActive>
 
+</mt:Ignore>

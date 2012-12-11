@@ -11,6 +11,7 @@
     <$mt:Var name="page_title" value="コメント投稿エラー"$>
     <mt:SetVarBlock name="message">コメントを投稿できませんでした。エラー: <$mt:ErrorMessage$></mt:SetVarBlock>
 </mt:If>
+<mt:SetVarBlock name="title"><$mt:BlogName encode_html="1"$>: <$mt:Var name="page_title"$></mt:SetVarBlock>
 <mt:SetVarBlock name="html_footer">
     <script type="text/javascript">
     /* <![CDATA[ */
@@ -23,7 +24,7 @@
 
 
 <mt:Ignore><!-- pageTitle --></mt:Ignore>
-<mt:SetVarBlock name="pageTitle"><$mt:EntryTitle$> | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
+<mt:SetVarBlock name="pageTitle"><$mt:EntryTitle$> | <$mt:BlogName encode_html="1"$> | HIDDEN-CHAMPION.NET | 「ヒドゥン・チャンピオン」</mt:SetVarBlock>
 <mt:Ignore><!-- pageDescription --></mt:Ignore>
 <mt:SetVarBlock name="pageDescription"><$MTEntryBody remove_html="1" trim_to="100" $></mt:SetVarBlock>
 <mt:Ignore><!-- pageKeywords --></mt:Ignore>
@@ -34,7 +35,7 @@
 <body>
 <div id="wrapper"> 
 	<!--header-->
-	<$MTInclude file="/shared/include/common/header.html" ssi="1"$>
+	<$MTInclude file="../../shared/include/common/header.html" ssi="1"$>
 	<!--/header--> 
 	<!--breadcrumb-->
 	<div id="crumb">
@@ -58,10 +59,10 @@
 		</section>
 	</div>
 	<!--footer-->
-	<$MTInclude file="/shared/include/common/footer.html" ssi="1"$>
+	<$MTInclude file="../../shared/include/common/footer.html" ssi="1"$>
 	<!--/footer--> 
 </div>
-<$MTInclude file="/shared/include/common/htmlFooter.html" ssi="1"$>
+<$MTInclude file="../../shared/include/common/htmlFooter.html" ssi="1"$>
 </body>
 </html>
 </MTApplyModifier>

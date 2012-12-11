@@ -1,25 +1,22 @@
-<div class="comment<mt:If name="__odd__"> odd<mt:Else> even</mt:If>"<mt:IfArchiveTypeEnabled archive_type="Individual"> id="comment-<$mt:CommentID$>"</mt:IfArchiveTypeEnabled>>
+<article class="comment<mt:If name="__odd__"> odd<mt:Else> even</mt:If> <mt:If name="__last__"> end<mt:Else></mt:If>"<mt:IfArchiveTypeEnabled archive_type="Individual"> id="comment-<$mt:CommentID$>"</mt:IfArchiveTypeEnabled>>
     <div class="inner">
-        <div class="comment-header">
-            <div class="asset-meta">
-               <span class="byline">
-                   <$mt:CommentAuthorIdentity$>
-<mt:IfCommentParent>
-                    <span class="vcard author"><$mt:CommentAuthorLink$></span>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信
-<mt:Else>
-                    <span class="vcard author"><$mt:CommentAuthorLink$></span>
-</mt:IfCommentParent>
-                    | <a href="<$mt:CommentLink$>"><abbr class="published" title="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate$></abbr></a>
+        <header class="comment-header">
+			<$mt:CommentAuthorIdentity$>
+			<mt:IfCommentParent>
+				From <span class="author"><$mt:CommentAuthorLink$></span> to <a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>
+			<mt:Else>
+				<span class="author"><$mt:CommentAuthorLink$></span>
+			</mt:IfCommentParent>
+                     <time datetime="<$mt:EntryDate language="en" format="%Y-%m-%d"$>"><$mt:CommentDate language="en" format="%B %d, %Y"$></time>
 <mt:Unless name="comment_preview">
     <mt:IfCommentsAccepted>
-                    | <$mt:CommentReplyToLink$>
+                     <$mt:CommentReplyToLink text="Reply"$>
     </mt:IfCommentsAccepted>
 </mt:Unless>
-               </span>
-            </div>
-        </div>
+              
+        </header>
         <div class="comment-content">
             <$mt:CommentBody$>
         </div>
     </div>
-</div>
+</article>
