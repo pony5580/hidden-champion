@@ -1,0 +1,33 @@
+{
+  "ad":[
+	
+	{
+	"img": "http://stage.hidden-champion.net/images/ads/ad_dummy2.jpg",
+	"link": "http://sports.yahoo.co.jp/",
+	"target": "_blank",
+	"alt": "テスト4" 
+    }
+	,
+	{
+	"img": "http://stage.hidden-champion.net/images/ads/FTC_SPSUM11.jpg",
+	"link": "http://weather.yahoo.co.jp/weather/",
+	"target": "_blank",
+	"alt": "テスト3" 
+    }
+	,
+	{
+	"img": "http://stage.hidden-champion.net/images/ads/Fiji%20count%20down2.jpg",
+	"link": "http://www.google.co.jp/",
+	"target": "_blank",
+	"alt": "テスト2" 
+    }
+	,
+	{
+	"img": "http://stage.hidden-champion.net/images/ads/55DSL_FW2010_300x240.jpg",
+	"link": "http://www.yahoo.co.jp/",
+	"target": "_blank",
+	"alt": "テスト1" 
+    }
+		
+	]
+}
