@@ -481,31 +481,31 @@ function mtRelativeDate(ts, fds) {
 
     var str;
     if (delta < 60) {
-        str = '逶ｴ蜑';
+        str = '直前';
     } else if (delta <= 86400) {
         // less than 1 day
         var hours = Math.floor(delta / 3600);
         var min = Math.floor((delta % 3600) / 60);
         if (hours == 1)
-            str = '1 譎る俣蜑';
+            str = '1 時間前';
         else if (hours > 1)
-            str = '2 譎る俣蜑'.replace(/2/, hours);
+            str = '2 時間前'.replace(/2/, hours);
         else if (min == 1)
-            str = '1 蛻�燕';
+            str = '1 分前';
         else
-            str = '2 蛻�燕'.replace(/2/, min);
+            str = '2 分前'.replace(/2/, min);
     } else if (delta <= 604800) {
         // less than 1 week
         var days = Math.floor(delta / 86400);
         var hours = Math.floor((delta % 86400) / 3600);
         if (days == 1)
-            str = '1 譌･蜑';
+            str = '1 日前';
         else if (days > 1)
-            str = '2 譌･蜑'.replace(/2/, days);
+            str = '2 日前'.replace(/2/, days);
         else if (hours == 1)
-            str = '1 譎る俣蜑';
+            str = '1 時間前';
         else
-            str = '2 譎る俣蜑'.replace(/2/, hours);
+            str = '2 時間前'.replace(/2/, hours);
     }
     return str ? str : fds;
 }
@@ -531,7 +531,7 @@ function mtShowCaptcha() {
     if (mtCaptchaVisible) return;
     var div = document.getElementById('comments-open-captcha');
     if (div) {
-        div.innerHTML = '';
+        div.innerHTML = '<div class="label"><label for="captcha_code">Captcha:</label></div><div class="field"><input type="hidden" name="token" value="C6ssUlvYIZcLRz9J41XPI7KVyeUwcGwkDq4hIwTj" /><img src="/CMS/mt/mt-comments.cgi/captcha/1/C6ssUlvYIZcLRz9J41XPI7KVyeUwcGwkDq4hIwTj" width="150" height="35" /><br /><input name="captcha_code" id="captcha_code" value="" autocomplete="off" /><p>画像の中に見える文字を入力してください。</p></div>';
         mtCaptchaVisible = true;
     }
 }
@@ -642,7 +642,7 @@ function mtFetchUser(cb) {
         var u = mtGetUser();
         var script = document.createElement('script');
         var ts = new Date().getTime();
-        script.src = 'http://stage.hidden-champion.net/CMS/mt/mt-comments.cgi?__mode=userinfo&blog_id=47&jsonp=' + cb + '&ts=' + ts + '&sid=' + u.sid;
+        script.src = 'http://stage.hidden-champion.net/CMS/mt/mt-comments.cgi?__mode=userinfo&blog_id=1&jsonp=' + cb + '&ts=' + ts + '&sid=' + u.sid;
         (document.getElementsByTagName('head'))[0].appendChild(script);
     }
 }
@@ -652,7 +652,7 @@ function mtVerifySession(cb) {
     var script = document.createElement('script');
     var ts = new Date().getTime();
     var u = mtGetUser();
-    script.src = 'http://stage.hidden-champion.net/CMS/mt/mt-comments.cgi?__mode=verify_session&blog_id=47&jsonp=' + cb + '&ts=' + ts + '&sid=' + u.sid;
+    script.src = 'http://stage.hidden-champion.net/CMS/mt/mt-comments.cgi?__mode=verify_session&blog_id=1&jsonp=' + cb + '&ts=' + ts + '&sid=' + u.sid;
     (document.getElementsByTagName('head'))[0].appendChild(script);
 }
 
@@ -672,7 +672,7 @@ function mtCommentOnSubmit(f) {
         mtRequestSubmitted = true;
 
         if (f.armor)
-            f.armor.value = '8c4525eecb0cbe8830e9a301de2919ee3784832c';
+            f.armor.value = 'e729758b836fff142ca9e3a7eb8d528530ae2813';
         if (f.bakecookie && f.bakecookie.checked)
             mtSaveUser(f);
 
@@ -697,7 +697,7 @@ function mtCommentSessionVerify(app_user) {
     if ( app_user && app_user.verified ) {
         f.submit();
     } else {
-        alert('繧ｻ繝�す繝ｧ繝ｳ縺ｮ譛牙柑譛滄剞縺悟�繧後※縺�∪縺吶ょ�蠎ｦ繧ｵ繧､繝ｳ繧､繝ｳ縺励※縺上□縺輔＞縲');
+        alert('セッションの有効期限が切れています。再度サインインしてください。');
         mtClearUser();
         mtFireEvent('usersignin');
 
@@ -782,13 +782,13 @@ mtAttachEvent('usersignin', mtUserOnLoad);
 function mtSignIn() {
     var doc_url = document.URL;
     doc_url = doc_url.replace(/#.+/, '');
-    var url = 'http://stage.hidden-champion.net/CMS/mt/mt-cp.cgi?__mode=login&blog_id=47';
+    var url = 'http://stage.hidden-champion.net/CMS/mt/mt-cp.cgi?__mode=login&blog_id=1';
     if (is_preview) {
         if ( document['comments_form'] ) {
             var entry_id = document['comments_form'].entry_id.value;
             url += '&entry_id=' + entry_id;
         } else {
-            url += '&return_url=http%3A%2F%2Fstage.hidden-champion.net%2Ftestblog%2F';
+            url += '&return_url=http%3A%2F%2Fstage.hidden-champion.net%2F';
         }
     } else {
         url += '&return_url=' + encodeURIComponent(doc_url);
@@ -806,7 +806,7 @@ function mtSignInOnClick(sign_in_element) {
             el = document.getElementById('comment-form-external-auth');
     }
     if (el)
-        el.innerHTML = '繧ｵ繧､繝ｳ繧､繝ｳ縺励∪縺... <span class="status-indicator">&nbsp;</span>';
+        el.innerHTML = 'サインインします... <span class="status-indicator">&nbsp;</span>';
 
     mtClearUser(); // clear any 'anonymous' user cookie to allow sign in
     mtSignIn();
@@ -827,13 +827,13 @@ function mtSignOut(entry_id) {
     mtClearUser();
     var doc_url = document.URL;
     doc_url = doc_url.replace(/#.+/, '');
-    var url = 'http://stage.hidden-champion.net/CMS/mt/mt-cp.cgi?__mode=logout&static=0&blog_id=47';
+    var url = 'http://stage.hidden-champion.net/CMS/mt/mt-cp.cgi?__mode=logout&static=0&blog_id=1';
     if (is_preview) {
         if ( document['comments_form'] ) {
             var entry_id = document['comments_form'].entry_id.value;
             url += '&entry_id=' + entry_id;
         } else {
-            url += '&return_url=http%3A%2F%2Fstage.hidden-champion.net%2Ftestblog%2F';
+            url += '&return_url=http%3A%2F%2Fstage.hidden-champion.net%2F';
         }
     } else {
         url += '&return_url=' + encodeURIComponent(doc_url);
@@ -865,7 +865,7 @@ function mtReplyCommentOnClick(parent_id, author) {
     var text = document.getElementById('comment-text');
 
     // Populate label with new values
-    var reply_text = '\<a href=\"#comment-__PARENT__\" onclick=\"location.href=this.href; return false\"\>__AUTHOR__縺九ｉ縺ｮ繧ｳ繝｡繝ｳ繝�<\/a\>縺ｫ霑比ｿ｡';
+    var reply_text = '\<a href=\"#comment-__PARENT__\" onclick=\"location.href=this.href; return false\"\>__AUTHOR__からのコメント\<\/a\>に返信';
     reply_text = reply_text.replace(/__PARENT__/, parent_id);
     reply_text = reply_text.replace(/__AUTHOR__/, author);
     label.innerHTML = reply_text;
@@ -1069,6 +1069,7 @@ if (/WebKit/i.test(navigator.userAgent)) { // sniff
 window.onload = mtInit;
 
 // END: fast browser onload init
+
 
 
 

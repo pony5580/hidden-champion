@@ -1,3 +1,4 @@
+$( 'head' ).append('<style type="text/css">#features_title .f_text { display: none; }</style>');
 var Feature;
 
 function Feature(){
